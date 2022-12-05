@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4c1646ea.css",
+    "main.js": "/static/js/main.cd94c465.js",
+    "static/js/255.8b032334.chunk.js": "/static/js/255.8b032334.chunk.js",
+    "static/media/solanaLogo.svg": "/static/media/solanaLogo.4396455eb015ffa3d3ffac51bcb86345.svg",
+    "static/media/icon-solana.svg": "/static/media/icon-solana.f303fef3f71b940c5e37e9521f69a557.svg",
+    "index.html": "/index.html",
+    "static/media/icon-sentre.svg": "/static/media/icon-sentre.a02950bb5492de94148515cd4790b16a.svg",
+    "static/media/icon-telegram.svg": "/static/media/icon-telegram.45e5db0d374621f831b404e32bc406ff.svg",
+    "main.4c1646ea.css.map": "/static/css/main.4c1646ea.css.map",
+    "main.cd94c465.js.map": "/static/js/main.cd94c465.js.map",
+    "255.8b032334.chunk.js.map": "/static/js/255.8b032334.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4c1646ea.css",
+    "static/js/main.cd94c465.js"
+  ]
+}
