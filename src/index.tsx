@@ -4,7 +4,7 @@ import View from 'view'
 import reportWebVitals from 'reportWebVitals'
 import 'static/styles/index.less'
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
-import { PhantomWalletAdapter, Coin98WalletAdapter } from '@solana/wallet-adapter-wallets'
+import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets'
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
 import configs from 'configs'
 
@@ -15,7 +15,7 @@ const {
 createRoot(document.getElementById('root') as HTMLElement).render(
     <BrowserRouter>
         <ConnectionProvider endpoint={endpoint}>
-			<WalletProvider wallets={[new PhantomWalletAdapter(), new Coin98WalletAdapter()]} autoConnect>
+			<WalletProvider wallets={[new PhantomWalletAdapter()]} autoConnect>
 				<WalletModalProvider>
 					<View />
 				</WalletModalProvider>

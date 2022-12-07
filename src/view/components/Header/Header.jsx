@@ -3,11 +3,12 @@ import './header.css'
 import { Container } from 'reactstrap'
 import { NavLink, Link } from 'react-router-dom'
 import 'antd/dist/antd.css'
-
-let NAV__LINKS = []
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
+require('@solana/wallet-adapter-react-ui/styles.css')
 
 const Header = () => {
-    NAV__LINKS = [
+
+    const NAV__LINKS = [
         {
             display: 'HOME',
             url: '/home',
@@ -68,21 +69,11 @@ const Header = () => {
                                     </NavLink>
                                 </li>
                             ))}
-                            <li className="nav__item" style={{ fontWeight: 'bold' }}>
-                                <a target="_blank" href="http://45.76.185.234:8080/" rel="noreferrer">
-                                    CREATE
-                                </a>
-                            </li>
                         </ul>
                     </div>
 
                     <div className="nav__right d-flex align-items-center gap-5 ">
-                            <button className="btn d-flex gap-2 align-items-center" style={{ color: 'white', fontSize: '.8rem' }}>
-                                <span>
-                                    <i className="ri-wallet-line"></i>
-                                </span>
-                                Login
-                            </button>
+                        <WalletMultiButton></WalletMultiButton>
 
                         <span className="mobile__menu">
                             <i className="ri-menu-line" onClick={toggleMenu}></i>

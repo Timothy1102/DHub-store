@@ -3,7 +3,7 @@ import Layout from "./components/Layout/Layout.jsx";
 import "bootstrap/dist/css/bootstrap.css";
 import "remixicon/fonts/remixicon.css";
 
-function App() {
+const App = () => {
   return <Layout />;
 }
 
