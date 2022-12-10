@@ -5,8 +5,8 @@ import ava03 from "../images/ava-03.png";
 export const SELLER__DATA = [
   {
     id: "01",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
-    sellerName: "sellerName",
+    desc: "Web3 developer",
+    sellerName: "Tim Thang",
     sellerImg: ava01,
     currentBid: 5.89,
     fbUrl: "#",
@@ -16,8 +16,8 @@ export const SELLER__DATA = [
 
   {
     id: "02",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
-    sellerName: "sellerName",
+    desc: "Mobile app developer",
+    sellerName: "HieuTk",
     sellerImg: ava02,
     currentBid: 5.89,
     fbUrl: "#",
@@ -27,8 +27,8 @@ export const SELLER__DATA = [
 
   {
     id: "03",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia",
-    sellerName: "sellerName",
+    desc: "dApp developer",
+    sellerName: "Astro3",
     sellerImg: ava03,
     fbUrl: "#",
     instaUrl: "#",

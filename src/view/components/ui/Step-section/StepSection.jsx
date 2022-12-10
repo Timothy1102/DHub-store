@@ -33,7 +33,7 @@ const StepSection = () => {
             <Container>
                 <Row>
                     <Col lg="12" className="mb-4">
-                        <h3 className="step__title">Features</h3>
+                        <h3 className="step__title text-2xl font-semibold">Features</h3>
                     </Col>
 
                     {STEP__DATA.map((item, index) => (
@@ -42,7 +42,7 @@ const StepSection = () => {
                                 <span>
                                     <i className={item.icon}></i>
                                 </span>
-                                <h5>{item.title}</h5>
+                                <h5 className='text-xl font-semibold'>{item.title}</h5>
                                 <div className="step__item__content">
                                     <p className="mb-0">{item.desc}</p>
                                 </div>

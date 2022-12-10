@@ -36,21 +36,22 @@
 }
 
 .active {
-    color: #e250e5 !important;
+    color: #6bfaa3 !important;
+    font-size: large;
 }
 
-.logo h2 {
+/* .logo h2 {
     background: linear-gradient(-45deg, #e250e5, #4b50e6, #e250e5, #4b50e6);
     background-size: 100% 100%;
     background-clip: text;
     -webkit-text-stroke: 3px transparent;
     -webkit-text-fill-color: #14141f;
     margin-bottom: 0;
-}
+} */
 
 .wallet-adapter-button {
     padding: 3px 25px !important;
-    border: 1px solid #5142fc !important;
+    border: 1px solid #6d63e0 !important;
     border-radius: 50px !important;
     font-size: 0.8rem !important;
 }

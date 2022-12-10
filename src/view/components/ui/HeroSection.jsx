@@ -11,11 +11,11 @@ const HeroSection = () => {
                 <Row>
                     <Col lg="6" md="6">
                         <div className="hero__content">
-                            <h2 style={{ display: 'inline' }}>
+                            <h2 style={{ display: 'inline' }} className='font-semibold'>
                                 Discover dApp collections, buy & sell extraordinary
-                                <span style={{ display: 'inline' }}>dApp NFTs</span>
+                                <span style={{ display: 'inline' }}>dApps</span>
                             </h2>
-                            <p>Best place for developers, non-developers and business to find best products and develope a better Web3 world.</p>
+                            <p>Best place for developers, dApp users and business to find best products and develope a better Web3 world.</p>
 
                             <div className="hero__btns d-flex align-items-center gap-4">
                                 <button className=" explore__btn d-flex align-items-center gap-2">
