@@ -7,7 +7,6 @@ import { Row, Col } from 'reactstrap'
 import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone } from '@ant-design/icons'
 
 const MyNftCard = (props) => {
-    // sample
     const creator = 'creator'
     const id = 'id'
     const title = 'title'

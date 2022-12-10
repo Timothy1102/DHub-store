@@ -1,20 +1,29 @@
-// import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './nft-card.css'
 import { Row, Col } from 'reactstrap'
 import { CheckCircleOutlined, EyeTwoTone, CheckCircleTwoTone, HeartTwoTone } from '@ant-design/icons'
 import { Tag } from 'antd'
 
-const NftCard = () => {
-	// sample
-    const creator = 'creator'
-    const id = 'id'
-    const title = 'title'
-    const imgUrl = 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png'
-    const desc = 'desc'
-    const is_selling = true
-    const is_using = true
-    const tags = 'tags'
+const NftCard = ({item}) => {
+    const creator = item?.owner_id
+    const id = item?.token_id
+    const selling_price = item?.selling_price
+    const using_price = item?.using_price
+    const title = item?.itemData.metadata.title
+    const imgUrl = item?.itemData.metadata.media
+    const desc = item?.itemData.metadata.description
+    const is_selling = item?.is_selling
+    const tags = item?.itemData.metadata.extra
+    const isUsing = false
+
+    const truncatAddress = (address) => {
+        if (address) {
+            const shortAddress = `${address.substring(0, 3)}...${address.substring(address.length - 4)}`
+            
+            return shortAddress
+        }
+        return address
+    }
 
     return (
         <div className="single__nft__card" id="nftcard">
@@ -72,7 +81,7 @@ const NftCard = () => {
                 </p>
             </div>
 
-            <p style={{ color: 'gray', marginBottom: '0rem', fontSize: 14 }}>Owner: {creator}</p>
+            <p style={{ color: 'gray', marginBottom: '0rem', fontSize: 14 }}>Owner: {truncatAddress(creator)}</p>
 
             <div className=" d-flex align-items-center gap-2 single__nft-seen">
                 <EyeTwoTone twoToneColor="#ffa500" /> <span>53</span>
@@ -80,20 +89,20 @@ const NftCard = () => {
                 <CheckCircleTwoTone twoToneColor="#52c41a" /> <span>15</span>
             </div>
 
-            <div className="creator__info-wrapper d-flex gap-3" style={{ marginTop: 10 }}>
-                <div className="creator__info w-100 d-flex align-items-center justify-content-between">
+            <div className="d-flex gap-3" style={{ marginTop: 10 }}>
+                <div className="w-100 d-flex align-items-center justify-content-between">
                     <div>
-                        <h6>Selling price</h6>
-                        <p style={{ color: 'orange' }}>
-                            0
-                            <span style={{ color: '#b1b3b1' }}> SOL</span>
+                        <h6 style={{fontSize: '0.8rem'}}>Selling price</h6>
+                        <p className='font-semibold' style={{color: 'orange'}}>
+                            {selling_price}
+                            <span className='font-bold' style={{color: '#b1b3b1'}}> SOL</span>
                         </p>
                     </div>
                     <div>
-                        <h6>Using price</h6>
-                        <p style={{ color: 'orange' }}>
-                            0
-                            <span style={{ color: '#b1b3b1' }}> SOL</span>
+                        <h6 style={{fontSize: '0.8rem'}}>Using price</h6>
+                        <p className='font-semibold' style={{ color: 'orange'}}>
+                            {using_price}
+                            <span className='font-bold' style={{ color: '#b1b3b1' }}> SOL</span>
                         </p>
                     </div>
                 </div>
@@ -105,7 +114,7 @@ const NftCard = () => {
                         Buy
                     </button>
 
-                    {is_using.includes(window.accountId) ? (
+                    {(isUsing) ? (
                         <Tag icon={<CheckCircleOutlined />} color="success" style={{ marginLeft: 130, borderRadius: 15 }}>
                             Using
                         </Tag>

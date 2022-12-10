@@ -57,7 +57,7 @@ const Header = () => {
                 <div className="navigation">
                     <div className="logo">
                         <Link style={{ textDecoration: 'none' }} to={`/`}>
-                            <img src={DHubLogo} className='h-[35px]'/>
+                            <img src={DHubLogo} className='h-[35px]' alt='DHub logo'/>
                         </Link>
                     </div>
 

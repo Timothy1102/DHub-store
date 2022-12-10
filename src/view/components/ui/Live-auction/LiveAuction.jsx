@@ -1,28 +1,13 @@
-// import { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import MyNftCard from '../My-nft-card/MyNftCard'
 import NftCard from '../Nft-card/NftCard'
 import './live-auction.css'
+import {DAPP__DATA} from '../../../assets/data/data'
 
 const LiveAuction = () => {
-    const data = [
-        {
-            owner_id: 'owner_id',
-            is_selling: true,
-            token_id: 'token_id',
-            selling_price: 0,
-            using_price: 0,
-            itemData: {
-                metadata: {
-                    title: 'title',
-                    description: 'description',
-                    extra: 'extra',
-                    media: 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png',
-                },
-            },
-        },
-    ]
+    const data = DAPP__DATA;
+    console.log('dapp: ', DAPP__DATA)
 
     return (
         <section>
@@ -37,31 +22,15 @@ const LiveAuction = () => {
                         </div>
                     </Col>
 
-                    {data.map((item) =>
+                    {data.map((item, i) =>
                         item.owner_id !== '' ? (
-                            <>
-                                <Col lg="3" md="4" sm="6" className="mb-4" key={item.token_id}>
-                                    <NftCard item={item} />
-                                </Col>
-                            </>
+                            <Col key={i} lg="3" md="4" sm="6" className="mb-4">
+                                <NftCard item={item} />
+                            </Col>
                         ) : (
-                            <>
-                                <Col lg="3" md="4" sm="6" className="mb-4" key={item.token_id}>
-                                    <MyNftCard
-                                        item={{
-                                            title: item.itemData.metadata.title,
-                                            id: item.token_id,
-                                            creator: item.owner_id,
-                                            tags: item.itemData.metadata.extra,
-                                            desc: item.itemData.metadata.description,
-                                            is_selling: true,
-                                            selling_price: item.sale_conditions,
-                                            using_price: item.use_condition,
-                                            imgUrl: item.itemData.metadata.media,
-                                        }}
-                                    />
-                                </Col>
-                            </>
+                            <Col key={i} lg="3" md="4" sm="6" className="mb-4">
+                                <MyNftCard item={item} />
+                            </Col>
                         ),
                     )}
                 </Row>
