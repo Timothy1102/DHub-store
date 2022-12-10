@@ -45,17 +45,17 @@ const NftCard = ({item}) => {
                         </a>
                     </Col>
                     <Col>
-                        <h5 className="nft__title d-inline-flex" style={{ marginBottom: 0 }}>
-                            <Link style={{ color: 'white', fontSize: 20 }} to={`/market/${id}`}>
+                        <h5 className="nft__title d-inline-flex mb-0">
+                            <Link style={{ color: 'white', fontSize: 20 , fontWeight: 600}} to={`/market/${id}`}>
                                 {title}
                             </Link>
                         </h5>
-                        <div className="tags" style={{ marginTop: 4 }}>
+                        <div className="tags pb-2">
                             <p
                                 style={{
                                     display: 'inline',
-                                    fontSize: 15,
-                                    color: '#40a9ff',
+                                    fontSize: 12,
+                                    color: '#39a68c',
                                 }}
                             >
                                 {tags}

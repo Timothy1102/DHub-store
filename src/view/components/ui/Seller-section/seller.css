@@ -1,5 +1,6 @@
 .seller__section-title h3 {
   color: #fff;
+  text-shadow: 0 0 7px rgb(0, 255, 140), 0 0 13px #0fa;
 }
 
 .seller__img {

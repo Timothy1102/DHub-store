@@ -3,7 +3,7 @@ import './header.css'
 import { Container } from 'reactstrap'
 import { NavLink, Link } from 'react-router-dom'
 import 'antd/dist/antd.css'
-import DHubLogo from '../../assets/images/DHub-logo.png'
+import DHubLogo from '../../assets/images/DHub-Store-light-logo.png'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 require('@solana/wallet-adapter-react-ui/styles.css')
 
@@ -57,7 +57,7 @@ const Header = () => {
                 <div className="navigation">
                     <div className="logo">
                         <Link style={{ textDecoration: 'none' }} to={`/`}>
-                            <img src={DHubLogo} className='h-[35px]' alt='DHub logo'/>
+                            <img src={DHubLogo} className='h-[45px]' alt='DHub logo'/>
                         </Link>
                     </div>
 

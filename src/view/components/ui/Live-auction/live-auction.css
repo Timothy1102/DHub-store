@@ -78,6 +78,7 @@
 
 .live__auction__top h3 {
   color: #fff;
+  text-shadow: 0 0 7px rgb(0, 255, 140), 0 0 13px #0fa;
 }
 
 .live__auction__top span a {

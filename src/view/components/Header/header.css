@@ -36,8 +36,9 @@
 }
 
 .active {
-    color: #6bfaa3 !important;
     font-size: large;
+    color: #fff;
+    text-shadow: 0 0 7px rgb(0, 255, 140), 0 0 13px #0fa;
 }
 
 /* .logo h2 {

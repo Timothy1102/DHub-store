@@ -23,7 +23,7 @@ const HeroSection = () => {
                                 </button>
                                 <button className=" create__btn d-flex align-items-center gap-2">
                                     <i className="ri-ball-pen-line"></i>
-                                    <a target="_blank" href="#" rel="noreferrer">
+                                    <a target="_blank" href="/" rel="noreferrer">
                                         Create
                                     </a>
                                 </button>

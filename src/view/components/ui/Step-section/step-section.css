@@ -5,6 +5,10 @@
   --fourth: #40a9ff;
 }
 
+h3 {
+  text-shadow: 0 0 7px rgb(0, 255, 140), 0 0 13px #0fa;
+}
+
 .single__step__item {
   border-radius: 20px;
   padding: 20px;
