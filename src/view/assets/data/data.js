@@ -4,11 +4,12 @@ import ava03 from '../images/ava-03.png'
 import ava04 from '../images/ava-04.png'
 import ava05 from '../images/ava-05.png'
 import ava06 from '../images/ava-06.png'
+import {truncatAddress} from '../../../utils/format'
 
 // TODO: Fetch onchain data
 export const DAPP__DATA = [
     {
-        owner_id: '2iMVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFMjzA',
+        owner_id: truncatAddress('2iMVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFMjzA'),
         is_selling: true,
         app_id: 'app_id_01',
         selling_price: 25.5,
@@ -24,7 +25,7 @@ export const DAPP__DATA = [
         },
     },
     {
-        owner_id: 'ckdVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFcndl',
+        owner_id: truncatAddress('ckdVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFcndl'),
         is_selling: true,
         app_id: 'app_id_02',
         selling_price: 34.3,
@@ -39,7 +40,7 @@ export const DAPP__DATA = [
         },
     },
     {
-        owner_id: 'eudVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFncjd',
+        owner_id: truncatAddress('eudVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFncjd'),
         is_selling: true,
         app_id: 'app_id_03',
         selling_price: 8.2,
@@ -54,7 +55,7 @@ export const DAPP__DATA = [
         },
     },
     {
-        owner_id: '8dUVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QF8DS4',
+        owner_id: truncatAddress('8dUVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QF8DS4'),
         is_selling: true,
         app_id: 'app_id_04',
         selling_price: 31.2,
@@ -69,7 +70,7 @@ export const DAPP__DATA = [
         },
     },
     {
-        owner_id: 'dj33dfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QF38d3',
+        owner_id: truncatAddress('dj33dfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QF38d3'),
         is_selling: true,
         app_id: 'app_id_05',
         selling_price: 9.8,
@@ -84,7 +85,7 @@ export const DAPP__DATA = [
         },
     },
     {
-        owner_id: '5iMVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFMh44',
+        owner_id: truncatAddress('5iMVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFMh44'),
         is_selling: true,
         app_id: 'app_id_06',
         selling_price: 26,
@@ -99,7 +100,7 @@ export const DAPP__DATA = [
         },
     },
     {
-        owner_id: '2iMVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFMjzA',
+        owner_id: truncatAddress('2iMVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFMjzA'),
         is_selling: true,
         app_id: 'app_id_07',
         selling_price: 30.3,
@@ -114,7 +115,7 @@ export const DAPP__DATA = [
         },
     },
     {
-        owner_id: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        owner_id: truncatAddress('0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8'),
         is_selling: true,
         app_id: 'app_id_08',
         selling_price: 23.4,
@@ -139,7 +140,7 @@ export const SELLER__DATA = [
         id: '01',
         desc: 'Web3 developer',
         sellerName: 'Tim Thang',
-        address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        address: truncatAddress('0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8'),
         sellerImg: ava01,
         currentBid: 5.89,
         fbUrl: '#',
@@ -149,7 +150,7 @@ export const SELLER__DATA = [
     {
         id: '02',
         desc: 'Mobile app developer',
-        address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        address: truncatAddress('0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8'),
         sellerName: 'HieuTk',
         sellerImg: ava02,
         currentBid: 5.89,
@@ -160,7 +161,7 @@ export const SELLER__DATA = [
     {
         id: '03',
         desc: 'dApp developer',
-        address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        address: truncatAddress('0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8'),
         sellerName: 'Astro3',
         sellerImg: ava03,
         fbUrl: '#',
@@ -170,7 +171,7 @@ export const SELLER__DATA = [
     {
         id: '04',
         desc: 'dApp developer',
-        address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        address: truncatAddress('0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8'),
         sellerName: 'KO2',
         sellerImg: ava04,
         fbUrl: '#',
@@ -180,7 +181,7 @@ export const SELLER__DATA = [
     {
         id: '05',
         desc: 'dApp developer',
-        address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        address: truncatAddress('0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8'),
         sellerName: 'Carsten',
         sellerImg: ava05,
         fbUrl: '#',
@@ -190,7 +191,7 @@ export const SELLER__DATA = [
     {
         id: '06',
         desc: 'dApp developer',
-        address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        address: truncatAddress('0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8'),
         sellerName: 'Aykut',
         sellerImg: ava06,
         fbUrl: '#',

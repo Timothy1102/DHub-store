@@ -1,7 +1,6 @@
 import "./seller.css";
 import { Container, Row, Col } from "reactstrap";
 import { SELLER__DATA } from "../../../assets/data/data";
-import {truncatAddress} from '../../../../utils/format'
 
 const SellerSection = () => {
   return (
@@ -23,7 +22,7 @@ const SellerSection = () => {
 
                 <div className="seller__content">
                   <h6 className="font-bold">{item.sellerName}</h6>
-                  <h6 style={{ color: 'gray'}}>{truncatAddress(item.address)}</h6>
+                  <h6 style={{ color: 'gray'}}>{item.address}</h6>
                 </div>
               </div>
             </Col>

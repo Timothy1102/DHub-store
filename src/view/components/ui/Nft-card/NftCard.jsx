@@ -2,15 +2,14 @@ import { Link } from 'react-router-dom'
 import './nft-card.css'
 import { Row, Col } from 'reactstrap'
 import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone } from '@ant-design/icons'
-import {truncatAddress} from '../../../../utils/format'
 
 const NftCard = ({item}) => {
     const creator = item?.owner_id
     const selling_price = item?.selling_price
-    const title = item?.metadata.title
-    const imgUrl = item?.metadata.media
-    const desc = item?.metadata.description
-    const tags = item?.metadata.extra
+    const title = item?.metadata?.title
+    const imgUrl = item?.metadata?.media
+    const desc = item?.metadata?.description
+    const tags = item?.metadata?.extra
 
     return (
         <div className="single__nft__card" id="nftcard">
@@ -68,7 +67,7 @@ const NftCard = ({item}) => {
                 </p>
             </div>
 
-            <p style={{ color: 'gray', marginBottom: '0rem', fontSize: 14 }}>Owner: {truncatAddress(creator)}</p>
+            <p style={{ color: 'gray', marginBottom: '0rem', fontSize: 14 }}>Owner: {creator}</p>
 
             <div className=" d-flex align-items-center gap-2 single__nft-seen">
                 <EyeTwoTone twoToneColor="#ffa500" /> <span>53</span>

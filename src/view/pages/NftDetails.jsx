@@ -83,27 +83,7 @@ const NftDetails = () => {
                                                 marginTop: 100,
                                             }}
                                         >
-                                            0
-                                        </h1>
-                                        <h4
-                                            style={{
-                                                color: 'gray',
-                                                display: 'inline',
-                                                marginLeft: 15,
-                                            }}
-                                        >
-                                            SOL
-                                        </h4>
-
-                                        <h1
-                                            style={{
-                                                color: 'white',
-                                                display: 'inline',
-                                                marginLeft: 20,
-                                                marginTop: 100,
-                                            }}
-                                        >
-                                            0
+                                            {sampleNft.selling_price}
                                         </h1>
                                         <h4
                                             style={{
@@ -200,10 +180,10 @@ const NftDetails = () => {
                                                         marginLeft: 200,
                                                     }}
                                                 >
-                                                    Buy
+                                                    Use
                                                 </button>
 
-                                                {sampleNft.users.includes(window.accountId) ? (
+                                                {/* {sampleNft.users.includes(window.accountId) ? (
                                                     <>
                                                         <div
                                                             className=" d-inline-flex align-items-center gap-2 w-30"
@@ -233,13 +213,13 @@ const NftDetails = () => {
                                                     >
                                                         Use
                                                     </button>
-                                                )}
+                                                )} */}
 
                                                 <button
                                                     className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
                                                     style={{
                                                         float: 'right',
-                                                        marginRight: 110,
+                                                        marginRight: 200,
                                                     }}
                                                     onClick={() => setShowModal(true)}
                                                 >
