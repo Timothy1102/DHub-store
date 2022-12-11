@@ -12,6 +12,23 @@
     }
 }
 
+.bid__btn {
+    border: none;
+    outline: none;
+    padding: 5px 22px;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #fff;
+    border-radius: 50px;
+    transition: 0.3s;
+    background: #3f3f63;
+}
+
+.bid__btn:hover {
+    background: #fff;
+    color: #5142fc;
+}
+
 #description {
     height: 160px;
     border: 0.3px solid #ffa500;

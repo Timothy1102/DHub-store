@@ -1,41 +1,9 @@
 import ava01 from '../images/ava-01.png'
 import ava02 from '../images/ava-02.png'
 import ava03 from '../images/ava-03.png'
-
-// TODO: Fetch onchain data
-export const SELLER__DATA = [
-    {
-        id: '01',
-        desc: 'Web3 developer',
-        sellerName: 'Tim Thang',
-        sellerImg: ava01,
-        currentBid: 5.89,
-        fbUrl: '#',
-        instaUrl: '#',
-        twitUrl: '#',
-    },
-
-    {
-        id: '02',
-        desc: 'Mobile app developer',
-        sellerName: 'HieuTk',
-        sellerImg: ava02,
-        currentBid: 5.89,
-        fbUrl: '#',
-        instaUrl: '#',
-        twitUrl: '#',
-    },
-
-    {
-        id: '03',
-        desc: 'dApp developer',
-        sellerName: 'Astro3',
-        sellerImg: ava03,
-        fbUrl: '#',
-        instaUrl: '#',
-        twitUrl: '#',
-    },
-]
+import ava04 from '../images/ava-04.png'
+import ava05 from '../images/ava-05.png'
+import ava06 from '../images/ava-06.png'
 
 // TODO: Fetch onchain data
 export const DAPP__DATA = [
@@ -159,4 +127,70 @@ export const DAPP__DATA = [
 			},
 		},
 	}
+]
+
+// TODO: Fetch onchain data
+export const SELLER__DATA = [
+    {
+        id: '01',
+        desc: 'Web3 developer',
+        sellerName: 'Tim Thang',
+		address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        sellerImg: ava01,
+        currentBid: 5.89,
+        fbUrl: '#',
+        instaUrl: '#',
+        twitUrl: '#',
+    },
+    {
+        id: '02',
+        desc: 'Mobile app developer',
+		address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        sellerName: 'HieuTk',
+        sellerImg: ava02,
+        currentBid: 5.89,
+        fbUrl: '#',
+        instaUrl: '#',
+        twitUrl: '#',
+    },
+    {
+        id: '03',
+        desc: 'dApp developer',
+		address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        sellerName: 'Astro3',
+        sellerImg: ava03,
+        fbUrl: '#',
+        instaUrl: '#',
+        twitUrl: '#',
+    },
+    {
+        id: '04',
+        desc: 'dApp developer',
+		address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        sellerName: 'KO2',
+        sellerImg: ava04,
+        fbUrl: '#',
+        instaUrl: '#',
+        twitUrl: '#',
+    },
+    {
+        id: '05',
+        desc: 'dApp developer',
+		address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        sellerName: 'Carsten',
+        sellerImg: ava05,
+        fbUrl: '#',
+        instaUrl: '#',
+        twitUrl: '#',
+    },
+    {
+        id: '06',
+        desc: 'dApp developer',
+		address: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+        sellerName: 'Aykut',
+        sellerImg: ava06,
+        fbUrl: '#',
+        instaUrl: '#',
+        twitUrl: '#',
+    },
 ]
