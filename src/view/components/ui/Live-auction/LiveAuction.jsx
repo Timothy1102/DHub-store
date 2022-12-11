@@ -6,9 +6,6 @@ import './live-auction.css'
 import {DAPP__DATA} from '../../../assets/data/data'
 
 const LiveAuction = () => {
-    const data = DAPP__DATA;
-    console.log('dapp: ', DAPP__DATA)
-
     return (
         <section>
             <Container>
@@ -22,7 +19,7 @@ const LiveAuction = () => {
                         </div>
                     </Col>
 
-                    {data.map((item, i) =>
+                    {DAPP__DATA.map((item, i) =>
                         item.owner_id !== '' ? (
                             <Col key={i} lg="3" md="4" sm="6" className="mb-4">
                                 <NftCard item={item} />

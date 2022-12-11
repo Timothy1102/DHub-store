@@ -128,6 +128,69 @@ export const DAPP__DATA = [
 		},
 	}
 ]
+// TODO: Fetch onchain data
+export const TRENDING_DAPPS = [
+    {
+		owner_id: '0y9VPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95Q48cDD8',
+		is_selling: true,
+		token_id: 'token_id',
+		selling_price: 23.4,
+		using_price: 40,
+		itemData: {
+			metadata: {
+				title: 'Astar Cats',
+				description: `AstarCats is the first cats NFT collection on Astar Network. AstarCats is not just another PFP project, but it comes with many utilities and holder benefits planned ahead! Our ultimate mission is to support promising projects on Astar Network by providing our creative resources. The art is CC0(Creative Common zero), which means you will own all rights to the NFT you mint/buy. This will allow you or any projects to use AstarCats brand and help create AstarCats ecosystem.`,
+				extra: 'NFT',
+				media: 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png',
+			},
+		},
+	},
+	{
+		owner_id: 'dj33dfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QF38d3',
+		is_selling: true,
+		token_id: 'token_id',
+		selling_price: 9.8,
+		using_price: 19.5,
+		itemData: {
+			metadata: {
+				title: 'ADAO',
+				description: `About ADAOA-DAO will be based on dApp staking of Astar Network. Users will get some of the developer rewards while participating and gaining basic rewards. At present, A-DAO divides the developer rewards into: Revenue Reward, On-chain Treasury, Incubation Fund, any rewards of which can be adjusted by DAO governance. Revenue Reward60% of developer revenue will be distributed to all users who participate in staking Astar, for A-DAO itself was created to allow everyone to get more income. On-chain Treasury 30% of the developer revenue will be allocated to the on-chain treasury, which will first be used to invest in ecological projects on Astar, including but not limited to: project investment, liquidity mining, etc. Incubation Fund 10% of the earliest developer revenue will be allocated to the project side. After the establishment of the DAO committee, any builders who are conducive to ecological development can apply for this fund.`,
+				extra: 'Social, Defi',
+				media: 'https://bafybeiedodqw24b6zkpfycj2nhqil75a5dughdrj7qfiv3sfjslmrb3kle.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2005.13.29.png',
+			},
+		},
+	},
+	{
+		owner_id: '5iMVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QFMh44',
+		is_selling: true,
+		token_id: 'token_id',
+		selling_price: 26,
+		using_price: 45.4,
+		itemData: {
+			metadata: {
+				title: 'SushiTop',
+				description: `SUSHI TOP MARKETING is an NFT distributing specific company. Aiming to Create a culture of Token-graph marketing. About Sushi Top services Various methods of NFTdistributing Audio Token Distributor We can distribute NFTs via sound. NFT touch Shot We can send NFTs by touching an IC card to the smartphone. QR code Shot We can distribute NFTs by scanning the QR code.You can even use this in zoom MTG. You can try Audio Token distributor DEMO. https://www.youtube.com/watch?v=zYAo8ZRno1k Our Uniqueness Temporary Wallet Temporary Wallet technology allows users who do not have a wallet to receive NFTs. NFT Sealer NFT sealer technology can seal one on-chain NFT in one QR code (or URL). So enterprises can sell NFTs in real money or other digital payment methods. NFT Vending Machines We are making an actual Vending machine with some makers.It is currently being made and will be placed in movie theaters and commercial facilities. ### SUSHI TOP Vision Token Graph Marketing SUSHI TOP aims to create a culture of Token Graph Marketing. First of all, Token Graph is a concept that people can predict each person's preferences based on what kind of NFTs they have in their wallets. And we can send NFTs as Advertisements to particular NFT holders with high affinity. Examples: We sent commemorative participation NFTs only to those who attended Vtuber live music events.We sent out advertising NFTs at the time of the DVD/archival distribution release to make people aware of the DVD/archival distribution release. Marketing of Digital Ownership We believe Web3.0 is the era of digital ownership. So token-graph marketing is a marketing philosophy based on what people own in their Wallet. And this marketing cares more about privacy, we do not need cookies and other personal information. Our records on Astar and Shiden Network We distributed NFTs at a Vtuber's live performance (live venue & online distribution) with BGM. We set up NFT cards at an NFT art exhibition and distributed commemorative NFTs with them. We distributed commemorative NFTs with NFT cards and NFT Sealer at STEPN offline events. We collaborated with Horie to distribute NFTs commemorating the first anniversary of the Japanese distribution service. We distributed original NFTs of Hideki Matsui and Miliyah Kato.`,
+				extra: 'NFT, Marketplace',
+				media: 'https://bafybeibenfttro7bl3fgsk4gl3fez2s7ptweffa2q76wrtvkffbj2jeyg4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.45.33.png',
+			},
+		},
+	},
+	{
+		owner_id: '8dUVPfUz1GfWQac1mgnusmLUUFTxzpYc7CUN95QF8DS4',
+		is_selling: true,
+		token_id: 'token_id',
+		selling_price: 31.2,
+		using_price: 84,
+		itemData: {
+			metadata: {
+				title: 'Astar Degens',
+				description: `Astar Degen's Mission    Incubating promising projects and bringing new ideas to the Astar Ecosystem with the help of a community-governed DAO fund.     Astar Degens is a community without hierarchy. Where impactful action is incentivized and rewarded. We welcome all ideas equally, and value productive effort. As a community, we help realize the value of supportive cooperation within the blockchain space, by encouraging fearless participation within the Astar Network.   We aim to maximize both utility and transparency. We reward and reinvest in our community. We encourage innovation and creativity, allowing us to cultivate interoperability from the ground up. Our collective efforts will act as a community incubator, allowing abstract ideas to transition toward economically viable projects. Community participation and DAO voting will direct our treasury toward supporting promising creators within the Astar ecosystem. Whether you are an artist, creator, influencer, developer, degen, or ape; all are welcome, and all will be rewarded for their constructive contributions.   We believe our platform will create a thriving ecosystem, by incentivizing individual participation. Our DAO is a powerful tool needed to bring new ideas forward, and to build a robust future for the interoperable block-chain space.   We are relentless. We work as one. We are Astar Degens.`,
+				extra: 'Defi, DEX',
+				media: 'https://bafybeifqn5sfmyv6edoj4tp2saxmx2wv7whdgcgijx76xefo5iplfbwn6y.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2022.16.36.png',
+			},
+		},
+	},
+]
 
 // TODO: Fetch onchain data
 export const SELLER__DATA = [
