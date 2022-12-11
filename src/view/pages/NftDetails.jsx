@@ -7,23 +7,20 @@ import '../styles/nft-details.css'
 import Modal from '../components/ui/Modal/Modal'
 import ModalTransferNft from '../components/ui/Modal-transfer-nft/ModalTransferNFT'
 import ModalListNft from '../components/ui/Modal-list-nft/ModalListNFT'
+import { DAPP__DATA } from '../assets/data/data'
 
 const NftDetails = () => {
     const { id } = useParams()
     const [showModal, setShowModal] = useState(false)
     const [showListModal, setShowListModal] = useState(false)
 
-    const sampleNft = {
-        metadata: {
-            title: 'title',
-            media: 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png',
-            reference: 'https://youtube.com',
-            description: 'description',
-            extra: 'extra',
-        },
-        owner_id: 'owner_id',
-        users: ['users'],
-    }
+    let sampleNft = {}
+
+    DAPP__DATA.forEach((item) => {
+        if (item.metadata.title === id) {
+            sampleNft = item
+        }
+    })
 
     return (
         <>
@@ -52,21 +49,21 @@ const NftDetails = () => {
 
                                             <div className=" d-flex align-items-center gap-2 single__nft-more">
                                                 <span>
-                                                    <a href='https://youtube.com' target="_blank" rel="noreferrer">
-                                                        <i class="ri-global-line"></i>
+                                                    <a href="https://youtube.com" target="_blank" rel="noreferrer">
+                                                        <i className="ri-global-line"></i>
                                                     </a>
                                                 </span>
                                                 <span>
-                                                    <i class="ri-send-plane-line"></i>
+                                                    <i className="ri-send-plane-line"></i>
                                                 </span>
                                                 <span>
-                                                    <i class="ri-discord-fill"></i>
+                                                    <i className="ri-discord-fill"></i>
                                                 </span>
                                                 <span>
-                                                    <i class="ri-github-fill"></i>
+                                                    <i className="ri-github-fill"></i>
                                                 </span>
                                                 <span>
-                                                    <i class="ri-more-2-line"></i>
+                                                    <i className="ri-more-2-line"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -118,7 +115,7 @@ const NftDetails = () => {
                                             SOL
                                         </h4>
 
-                                        {(sampleNft.owner_id === window.accountId) && (
+                                        {sampleNft.owner_id === window.accountId && (
                                             <>
                                                 <div style={{ marginTop: 50 }}>
                                                     <button
@@ -168,7 +165,7 @@ const NftDetails = () => {
                                             </>
                                         )}
 
-                                        {(sampleNft.owner_id === window.accountId) && (
+                                        {sampleNft.owner_id === window.accountId && (
                                             <>
                                                 <div className=" mt-3 d-flex align-items-center " style={{ marginBottom: '-80px', marginTop: 500 }}>
                                                     <button
@@ -188,8 +185,8 @@ const NftDetails = () => {
                                                     >
                                                         Transfer
                                                     </button>
-                                                    {showModal && <ModalTransferNft setShowModal={setShowModal} token_id={id} />}
-                                                    {showListModal && <ModalListNft setShowListModal={setShowListModal} token_id={id} />}
+                                                    {showModal && <ModalTransferNft setShowModal={setShowModal} app_id={id} />}
+                                                    {showListModal && <ModalListNft setShowListModal={setShowListModal} app_id={id} />}
                                                 </div>
                                             </>
                                         )}

@@ -125,8 +125,8 @@ const MyNftCard = (props) => {
                     <button className="bid__btn d-flex align-items-center gap-1" style={{ marginLeft: 40 }} onClick={() => setShowModal(true)}>
                         Transfer
                     </button>
-                    {showModal && <ModalTransferNft setShowModal={setShowModal} token_id={id} />}
-                    {showListModal && <ModalListNft setShowListModal={setShowListModal} token_id={id} />}
+                    {showModal && <ModalTransferNft setShowModal={setShowModal} app_id={id} />}
+                    {showListModal && <ModalListNft setShowListModal={setShowListModal} app_id={id} />}
                 </div>
             )}
         </div>

@@ -6,20 +6,18 @@ import {truncatAddress} from '../../../../utils/format'
 
 const NftCard = ({item}) => {
     const creator = item?.owner_id
-    const id = item?.token_id
     const selling_price = item?.selling_price
-    const title = item?.itemData.metadata.title
-    const imgUrl = item?.itemData.metadata.media
-    const desc = item?.itemData.metadata.description
-    // const is_selling = item?.is_selling
-    const tags = item?.itemData.metadata.extra
+    const title = item?.metadata.title
+    const imgUrl = item?.metadata.media
+    const desc = item?.metadata.description
+    const tags = item?.metadata.extra
 
     return (
         <div className="single__nft__card" id="nftcard">
             <div className="nft__content ">
                 <Row>
                     <Col lg="3" style={{ marginRight: 7 }}>
-                        <a href={`/market/${id}`}>
+                        <a href={`/market/${title}`}>
                             <img
                                 src={imgUrl}
                                 alt="nft thumbnail"
@@ -35,7 +33,7 @@ const NftCard = ({item}) => {
                     </Col>
                     <Col>
                         <h5 className="nft__title d-inline-flex mb-0">
-                            <Link style={{ color: 'white', fontSize: 20 , fontWeight: 600}} to={`/market/${id}`}>
+                            <Link style={{ color: 'white', fontSize: 20 , fontWeight: 600}} to={`/market/${title}`}>
                                 {title}
                             </Link>
                         </h5>

@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'reactstrap'
 import './trending.css'
 import NftCard from '../Nft-card/NftCard'
-import {TRENDING_DAPPS} from '../../../assets/data/data'
+import { TRENDING_DAPPS } from '../../../assets/data/data'
 
 const Trending = () => {
     return (
@@ -13,7 +13,7 @@ const Trending = () => {
                     </Col>
 
                     {TRENDING_DAPPS.map((item) => (
-                        <Col lg="3" md="4" sm="6" key={item.token_id} className="mb-4">
+                        <Col lg="3" md="4" sm="6" key={item.app_id} className="mb-4">
                             <NftCard item={item} />
                         </Col>
                     ))}

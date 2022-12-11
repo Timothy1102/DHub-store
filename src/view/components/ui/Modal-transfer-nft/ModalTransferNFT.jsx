@@ -1,33 +1,32 @@
-import React, { useState } from "react";
-import "./modal-transfer-nft.css";
+import React, { useState } from 'react'
+import './modal-transfer-nft.css'
 
-const ModalTransferNft = ({ setShowModal, token_id }) => {
+const ModalTransferNft = ({ setShowModal, app_id }) => {
+    const [accountId, setAccountId] = useState('')
 
-    const [accountId, setAccountId] = useState("");
-
-    async function submitTransfer(accountId, token_id) {
+    async function submitTransfer(accountId, app_id) {
         try {
-            if (accountId && token_id) {
-                console.log(accountId + token_id)
+            if (accountId && app_id) {
+                console.log(accountId + app_id)
                 await window.contractNFT.nft_transfer(
                     {
                         receiver_id: accountId,
-                        token_id: token_id,
+                        app_id: app_id,
                         approval_id: 0,
-                        memo: "Transfer to " + accountId
+                        memo: 'Transfer to ' + accountId,
                     },
                     30000000000000,
-                    1
-                );
+                    1,
+                )
             }
         } catch (e) {
-            console.log("Transfer error: ", e);
+            console.log('Transfer error: ', e)
         }
     }
 
     function handleTransferNft() {
-        console.log(accountId + token_id)
-        submitTransfer(accountId, token_id)
+        console.log(accountId + app_id)
+        submitTransfer(accountId, app_id)
         setShowModal(false)
     }
 
@@ -38,18 +37,18 @@ const ModalTransferNft = ({ setShowModal, token_id }) => {
                     <i class="ri-close-line" onClick={() => setShowModal(false)}></i>
                 </span>
                 <h6 className="text-center text-light">Transfer NFT</h6>
-                <p className="text-center text-light">
-                    Enter receiver account
-                </p>
+                <p className="text-center text-light">Enter receiver account</p>
 
                 <div className="input__item mb-4">
                     <input onChange={(e) => setAccountId(e.target.value)} type="text" placeholder="" />
                 </div>
 
-                <button className="place__bid-btn" onClick={handleTransferNft}>Transfer</button>
+                <button className="place__bid-btn" onClick={handleTransferNft}>
+                    Transfer
+                </button>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default ModalTransferNft;
+export default ModalTransferNft

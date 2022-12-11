@@ -6,40 +6,40 @@ import { Container, Row, Col } from 'reactstrap'
 import '../styles/wallet.css'
 
 const Wallet = () => {
-	const nfts = [
-		{
-			is_selling: true,
-			token_id: 'token_id',
-			selling_price: 0,
-			using_price: 0,
-			metadata: {
-				title: 'title',
-				description: 'description',
-				extra: 'extra',
-				media: 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png',
-			}
-		}
-	]
+    const nfts = [
+        {
+            is_selling: true,
+            app_id: 'app_id',
+            selling_price: 0,
+            using_price: 0,
+            metadata: {
+                title: 'title',
+                description: 'description',
+                extra: 'extra',
+                media: 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png',
+            },
+        },
+    ]
 
-	const sellingNft = [
-		{
-			itemData: {
-				users: ['user']
-			},
-			is_selling: true,
-			token_id: 'token_id',
-			selling_price: 0,
-			using_price: 0,
-			sale_conditions: 0,
-			use_conditions: 0,
-			metadata: {
-				title: 'title',
-				description: 'description',
-				extra: 'extra',
-				media: 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png',
-			}
-		}
-	]
+    const sellingNft = [
+        {
+            itemData: {
+                users: ['user'],
+            },
+            is_selling: true,
+            app_id: 'app_id',
+            selling_price: 0,
+            using_price: 0,
+            sale_conditions: 0,
+            use_conditions: 0,
+            metadata: {
+                title: 'title',
+                description: 'description',
+                extra: 'extra',
+                media: 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png',
+            },
+        },
+    ]
 
     return (
         <>
@@ -57,11 +57,11 @@ const Wallet = () => {
                                 <>
                                     {item.is_selling && (
                                         <>
-                                            <Col lg="3" md="4" sm="6" className="mb-4" key={item.token_id}>
+                                            <Col lg="3" md="4" sm="6" className="mb-4" key={item.app_id}>
                                                 <MyNftCard
                                                     item={{
                                                         title: item.metadata.title,
-                                                        id: item.token_id,
+                                                        id: item.app_id,
                                                         creator: item.owner_id,
                                                         tags: item.metadata.extra,
                                                         desc: item.metadata.description,
@@ -93,13 +93,13 @@ const Wallet = () => {
                                 item.using_price = item.use_condition
                                 return (
                                     <>
-                                        <Col lg="3" md="4" sm="6" className="mb-4" key={item.token_id}>
+                                        <Col lg="3" md="4" sm="6" className="mb-4" key={item.app_id}>
                                             <NftCard item={item} />
                                         </Col>
                                     </>
                                 )
                             }
-							return '';
+                            return ''
                         })}
                     </Row>
                 </Container>
@@ -117,11 +117,11 @@ const Wallet = () => {
                                 <>
                                     {item.is_selling === false && (
                                         <>
-                                            <Col lg="3" md="4" sm="6" className="mb-4" key={item.token_id}>
+                                            <Col lg="3" md="4" sm="6" className="mb-4" key={item.app_id}>
                                                 <MyNftCard
                                                     item={{
                                                         title: item.metadata.title,
-                                                        id: item.token_id,
+                                                        id: item.app_id,
                                                         creator: item.owner_id,
                                                         tags: item.metadata.extra,
                                                         desc: item.metadata.description,
