@@ -22,7 +22,7 @@ const CommonSection = ({ title, img }) => {
 				</Container>
 			)}
 			<Container className="text-center">
-				<h2 style={{ color: "white" }}>{title}</h2>
+				<h2 className="font-semibold text-3xl text-white">{title}</h2>
 			</Container>
 		</section>
 	);

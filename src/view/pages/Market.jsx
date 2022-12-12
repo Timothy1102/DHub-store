@@ -1,32 +1,14 @@
-// import React, { useState, useEffect } from "react";
 import CommonSection from '../components/ui/Common-section/CommonSection'
 import NftCard from '../components/ui/Nft-card/NftCard'
 import MyNftCard from '../components/ui/My-nft-card/MyNftCard'
 import { Container, Row, Col } from 'reactstrap'
 import '../styles/market.css'
+import { DAPP__DATA } from '../assets/data/data'
 
 const Market = () => {
-    const data = [
-        {
-            owner_id: 'owner_id',
-            app_id: 'app_id',
-            sale_conditions: 0,
-            use_conditions: 0,
-            itemData: {
-                metadata: {
-                    title: 'title',
-                    description: 'description',
-                    extra: 'extra',
-                    media: 'https://bafybeihumkfixgyh43jqapvuq6gse4vs2rtclnbr2pwfxmsdg6ykplh2a4.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2014.32.50.png',
-                },
-            },
-        },
-    ]
-
     return (
         <>
             <CommonSection title={'MarketPlace'} />
-
             <section>
                 <Container>
                     <Row>
@@ -67,7 +49,7 @@ const Market = () => {
                             </div>
                         </Col>
 
-                        {data?.map((item) =>
+                        {DAPP__DATA?.map((item) =>
                             item.owner_id !== window.accountId ? (
                                 <>
                                     <Col lg="3" md="4" sm="6" className="mb-4" key={item.app_id}>
