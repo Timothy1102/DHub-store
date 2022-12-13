@@ -39,15 +39,6 @@ const CustomComponent = () => {
       text: 'Can I create NFTs with this? 🤔',
       avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
       replies: []
-    },
-    {
-      userId: '03b',
-      comId: '017',
-      fullName: 'Aderson Pete',
-      userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
-      text: 'This is a scam 😭',
-      avatarUrl: 'https://ui-avatars.com/api/name=Adam&background=random',
-      replies: []
     }
   ])
 

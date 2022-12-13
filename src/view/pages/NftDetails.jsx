@@ -2,7 +2,7 @@ import { useState } from 'react'
 import CommonSection from '../components/ui/Common-section/CommonSection'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap'
-import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone } from '@ant-design/icons'
+import { EyeTwoTone, HeartTwoTone, CommentOutlined } from '@ant-design/icons'
 import '../styles/nft-details.css'
 import Modal from '../components/ui/Modal/Modal'
 import ModalTransferNft from '../components/ui/Modal-transfer-nft/ModalTransferNFT'
@@ -27,7 +27,7 @@ const NftDetails = () => {
         <>
             {sampleNft !== undefined && (
                 <>
-                    <CommonSection title={sampleNft.metadata.title} img={sampleNft.metadata.media} />
+                    <CommonSection title={sampleNft.metadata.title} img={sampleNft.metadata.media} verified={sampleNft.verified}/>
                     <section style={{ paddingTop: 30, marginBottom: 100 }}>
                         <Container>
                             <Row>
@@ -43,27 +43,27 @@ const NftDetails = () => {
                                     <div className="single__nft__content">
                                         <div className=" d-flex align-items-center justify-content-between mt-4 mb-4">
                                             <div className=" d-flex align-items-center gap-3 single__nft-seen">
-                                                <EyeTwoTone twoToneColor="#ffa500" /> <span>53</span>
-                                                <HeartTwoTone twoToneColor="#eb2f96" /> <span>34</span>
-                                                <CheckCircleTwoTone twoToneColor="#52c41a" /> <span>15</span>
+                                                <EyeTwoTone style={{fontSize: '1.5rem'}} twoToneColor="#ffa500" /> <span style={{fontSize: '1rem'}}>53</span>
+                                                <HeartTwoTone style={{fontSize: '1.5rem'}} twoToneColor="#eb2f96" /> <span style={{fontSize: '1rem'}}>34</span>
+                                                <CommentOutlined style={{fontSize: '1.5rem'}} twoToneColor="#52c41a" /> <span style={{fontSize: '1rem'}}>4</span>
                                             </div>
 
                                             <div className=" d-flex align-items-center gap-2 single__nft-more">
-                                                <span>
+                                                <span style={{fontSize: '1.3rem'}}>
                                                     <a href="https://solana.com/" target="_blank" rel="noreferrer">
                                                         <i className="ri-global-line"></i>
                                                     </a>
                                                 </span>
-                                                <span>
+                                                <span style={{fontSize: '1.3rem'}}>
                                                     <i className="ri-send-plane-line"></i>
                                                 </span>
-                                                <span>
+                                                <span style={{fontSize: '1.3rem'}}>
                                                     <i className="ri-discord-fill"></i>
                                                 </span>
-                                                <span>
+                                                <span style={{fontSize: '1.3rem'}}>
                                                     <i className="ri-github-fill"></i>
                                                 </span>
-                                                <span>
+                                                <span style={{fontSize: '1.3rem'}}>
                                                     <i className="ri-more-2-line"></i>
                                                 </span>
                                             </div>
