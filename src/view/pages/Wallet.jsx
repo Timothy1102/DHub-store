@@ -43,7 +43,7 @@ const Wallet = () => {
 
     return (
         <>
-            <CommonSection title="My NFTs" />
+            <CommonSection title="My dApps" />
             <section style={{ paddingBottom: 0 }}>
                 <Container>
                     <Row>

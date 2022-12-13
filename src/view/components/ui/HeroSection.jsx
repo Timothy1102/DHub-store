@@ -18,14 +18,14 @@ const HeroSection = () => {
                             <p>Best place for developers, dApp users and business to find best products and develope a better Web3 world.</p>
 
                             <div className="hero__btns d-flex align-items-center gap-4">
+                                <button className=" create__btn d-flex align-items-center gap-2">
+                                    <i class="ri-apps-line"></i>
+                                    <a target="_blank" href="/" rel="noreferrer">
+                                        For Developers
+                                    </a>
+                                </button>
                                 <button className=" explore__btn d-flex align-items-center gap-2">
                                     <i className="ri-rocket-line"></i> <Link to="/market">Explore</Link>
-                                </button>
-                                <button className=" create__btn d-flex align-items-center gap-2">
-                                    <i className="ri-ball-pen-line"></i>
-                                    <a target="_blank" href="/" rel="noreferrer">
-                                        Create
-                                    </a>
                                 </button>
                             </div>
                         </div>
