@@ -8,6 +8,7 @@ import Modal from '../components/ui/Modal/Modal'
 import ModalTransferNft from '../components/ui/Modal-transfer-nft/ModalTransferNFT'
 import ModalListNft from '../components/ui/Modal-list-nft/ModalListNFT'
 import { DAPP__DATA } from '../assets/data/data'
+import DefaultComponent from '../components/ui/Comment-section/CommentSection'
 
 const NftDetails = () => {
     const { id } = useParams()
@@ -27,7 +28,7 @@ const NftDetails = () => {
             {sampleNft !== undefined && (
                 <>
                     <CommonSection title={sampleNft.metadata.title} img={sampleNft.metadata.media} />
-                    <section style={{ paddingTop: 30 }}>
+                    <section style={{ paddingTop: 30, marginBottom: 100 }}>
                         <Container>
                             <Row>
                                 <Col
@@ -49,7 +50,7 @@ const NftDetails = () => {
 
                                             <div className=" d-flex align-items-center gap-2 single__nft-more">
                                                 <span>
-                                                    <a href="https://youtube.com" target="_blank" rel="noreferrer">
+                                                    <a href="https://solana.com/" target="_blank" rel="noreferrer">
                                                         <i className="ri-global-line"></i>
                                                     </a>
                                                 </span>
@@ -75,25 +76,29 @@ const NftDetails = () => {
                                             </div>
                                         </div>
 
-                                        <h1
-                                            style={{
-                                                color: 'white',
-                                                display: 'inline',
-                                                marginLeft: 50,
-                                                marginTop: 100,
-                                            }}
-                                        >
-                                            {sampleNft.selling_price}
-                                        </h1>
-                                        <h4
-                                            style={{
-                                                color: 'gray',
-                                                display: 'inline',
-                                                marginLeft: 15,
-                                            }}
-                                        >
-                                            SOL
-                                        </h4>
+                                        <div className='inline ml-[150px]'>
+                                            <h1
+                                                style={{
+                                                    color: 'white',
+                                                    display: 'inline',
+                                                    fontWeight: 600,
+                                                    fontSize: 25,
+                                                }}
+                                            >
+                                                {sampleNft.selling_price}
+                                            </h1>
+                                            <h4
+                                                style={{
+                                                    color: 'gray',
+                                                    display: 'inline',
+                                                    marginLeft: 15,
+                                                    fontWeight: 600,
+                                                    fontSize: 20,
+                                                }}
+                                            >
+                                                SOL
+                                            </h4>
+                                        </div>
 
                                         {sampleNft.owner_id === window.accountId && (
                                             <>
@@ -237,6 +242,7 @@ const NftDetails = () => {
                                                 marginTop: 130,
                                                 paddingLeft: 40,
                                                 paddingRight: 40,
+                                                paddingBottom: 20,
                                             }}
                                         >
                                             <h5
@@ -272,7 +278,9 @@ const NftDetails = () => {
                     </section>
                 </>
             )}
-            <hr style={{ color: 'white' }} />
+
+            <DefaultComponent/>
+
         </>
     )
 }
