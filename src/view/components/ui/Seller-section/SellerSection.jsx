@@ -22,7 +22,7 @@ const SellerSection = () => {
 
                 <div className="seller__content">
                   <h6 className="font-bold">{item.sellerName}</h6>
-                  <h6 style={{ color: 'gray'}}>{item.address}</h6>
+                  <h6 className="cursor-pointer" style={{ color: 'gray'}}>{item.address}</h6>
                 </div>
               </div>
             </Col>

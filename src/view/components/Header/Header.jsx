@@ -19,14 +19,6 @@ const Header = () => {
             url: '/market',
         },
         {
-            display: 'MINT',
-            url: '/mint',
-        },
-        {
-            display: 'CONTACT',
-            url: '/contact',
-        },
-        {
             display: 'PROFILE',
             url: '/wallet',
         },

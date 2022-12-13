@@ -67,7 +67,7 @@ const NftCard = ({item}) => {
                 </p>
             </div>
 
-            <p style={{ color: 'gray', marginBottom: '0rem', fontSize: 14 }}>Owner: {creator}</p>
+            <p className="cursor-pointer" style={{ color: 'gray', marginBottom: '0rem', fontSize: 14 }}>Owner: {creator}</p>
 
             <div className=" d-flex align-items-center gap-2 single__nft-seen">
                 <EyeTwoTone twoToneColor="#ffa500" /> <span>53</span>

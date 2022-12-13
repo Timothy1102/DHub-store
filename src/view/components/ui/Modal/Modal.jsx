@@ -9,9 +9,9 @@ const Modal = ({ setShowModal }) => {
         <span className="close__modal">
           <i class="ri-close-line" onClick={() => setShowModal(false)}></i>
         </span>
-        <h4 className="text-center text-light">Place your offer</h4>
+        <h4 className="text-center font-bold text-2xl">Place your offer</h4>
         <p className="text-center text-light" style={{ fontSize: 15}}>
-          You will be the owner of this dApp if the current owner accepts your offer.
+          You will be able to use this dApp if the dApp owner accepts your offer.
         </p>
 
         <div className="input__item mb-4">

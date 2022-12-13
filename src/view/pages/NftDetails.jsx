@@ -72,7 +72,7 @@ const NftDetails = () => {
                                         <div className="nft__creator d-inline-flex gap-3 align-items-center" style={{ display: 'inline' }}>
                                             <div className="creator__detail">
                                                 <p>Owner</p>
-                                                <h6>{sampleNft.owner_id}</h6>
+                                                <h6 className="cursor-pointer">{sampleNft.owner_id}</h6>
                                             </div>
                                         </div>
 
