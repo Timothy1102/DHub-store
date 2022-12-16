@@ -10,7 +10,7 @@ const NftCard = ({item}) => {
     const title = item?.name
     const imgUrl = item?.image
     const desc = item?.description
-    const tags = item?.tag
+    const tags = JSON.parse(item?.tag)
 
     return (
         <div className="single__nft__card" id="nftcard">
@@ -45,7 +45,13 @@ const NftCard = ({item}) => {
                                     color: '#39a68c',
                                 }}
                             >
-                                {tags}
+                                {tags.map((tag, i) => {
+                                    // Re-formatting
+                                    if (i !== tags.length - 1) {
+                                        return tag + ', '
+                                    }
+                                    return tag
+                                })}
                             </p>
                         </div>
                     </Col>
