@@ -60,9 +60,6 @@ const CustomComponent = () => {
         titleStyle={{ color: '#f2f2f2' }}
         commentsCount={4}
         commentData={data}
-        currentData={(data: any) => {
-          console.log('curent data', data)
-        }}
         logIn={{
           loginLink: 'http://localhost:3001/',
           signupLink: 'http://localhost:3001/'

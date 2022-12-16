@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CommonSection from '../components/ui/Common-section/CommonSection'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap'
@@ -7,27 +7,36 @@ import '../styles/nft-details.css'
 import Modal from '../components/ui/Modal/Modal'
 import ModalTransferNft from '../components/ui/Modal-transfer-nft/ModalTransferNFT'
 import ModalListNft from '../components/ui/Modal-list-nft/ModalListNFT'
-import { DAPP__DATA } from '../assets/data/data'
 import DefaultComponent from '../components/ui/Comment-section/CommentSection'
+import { getMarketplaceListings } from '../../script/marketplace/utils.js'
+import {truncatAddress} from '../../utils/format'
 
 const NftDetails = () => {
+    const [data, setData] = useState([])
     const { id } = useParams()
     const [showModal, setShowModal] = useState(false)
     const [showListModal, setShowListModal] = useState(false)
+    
+    useEffect(() => {
+        const getMarketData = async () => {
+            const listings = await getMarketplaceListings()
+            setData(listings)
+        }
+        getMarketData()
+    }, [])
 
-    let sampleNft = {}
-
-    DAPP__DATA.forEach((item) => {
-        if (item.metadata.title === id) {
-            sampleNft = item
+    let currentApp = {}
+    data.forEach((item) => {
+        if (item.name === id) {
+            currentApp = item
         }
     })
 
     return (
         <>
-            {sampleNft !== undefined && (
+            {currentApp !== undefined && (
                 <>
-                    <CommonSection title={sampleNft.metadata.title} img={sampleNft.metadata.media} verified={sampleNft.verified}/>
+                    <CommonSection title={currentApp.name} img={currentApp.image} verified={true}/>
                     <section style={{ paddingTop: 30, marginBottom: 100 }}>
                         <Container>
                             <Row>
@@ -72,7 +81,7 @@ const NftDetails = () => {
                                         <div className="nft__creator d-inline-flex gap-3 align-items-center" style={{ display: 'inline' }}>
                                             <div className="creator__detail">
                                                 <p>Owner</p>
-                                                <h6 className="cursor-pointer">{sampleNft.owner_id}</h6>
+                                                <h6 className="cursor-pointer">{truncatAddress(currentApp.owner_address)}</h6>
                                             </div>
                                         </div>
 
@@ -85,7 +94,7 @@ const NftDetails = () => {
                                                     fontSize: 25,
                                                 }}
                                             >
-                                                {sampleNft.selling_price}
+                                                {currentApp.cost_per_m}
                                             </h1>
                                             <h4
                                                 style={{
@@ -100,7 +109,7 @@ const NftDetails = () => {
                                             </h4>
                                         </div>
 
-                                        {sampleNft.owner_id === window.accountId && (
+                                        {currentApp.owner_address === window.accountId && (
                                             <>
                                                 <div style={{ marginTop: 50 }}>
                                                     <button
@@ -150,7 +159,7 @@ const NftDetails = () => {
                                             </>
                                         )}
 
-                                        {sampleNft.owner_id === window.accountId && (
+                                        {currentApp.owner_address === window.accountId && (
                                             <>
                                                 <div className=" mt-3 d-flex align-items-center " style={{ marginBottom: '-80px', marginTop: 500 }}>
                                                     <button
@@ -176,7 +185,7 @@ const NftDetails = () => {
                                             </>
                                         )}
 
-                                        {sampleNft.owner_id !== window.accountId && (
+                                        {currentApp.owner_address !== window.accountId && (
                                             <div style={{ marginTop: 50 }}>
                                                 <button
                                                     className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
@@ -188,7 +197,7 @@ const NftDetails = () => {
                                                     Use
                                                 </button>
 
-                                                {/* {sampleNft.users.includes(window.accountId) ? (
+                                                {/* {currentApp.users.includes(window.accountId) ? (
                                                     <>
                                                         <div
                                                             className=" d-inline-flex align-items-center gap-2 w-30"
@@ -259,7 +268,7 @@ const NftDetails = () => {
                                                     whiteSpace: 'pre-wrap',
                                                 }}
                                             >
-                                                {sampleNft.metadata.description}
+                                                {currentApp.description}
                                             </p>
                                             <p style={{ display: 'inline' }}>Tags: </p>
                                             <p
@@ -268,7 +277,14 @@ const NftDetails = () => {
                                                     color: 'cyan',
                                                 }}
                                             >
-                                                {sampleNft.metadata.extra}
+                                                {currentApp.tag && JSON.parse(currentApp?.tag).map((tag, i) => {
+                                                    // Re-formatting
+                                                    if (i !== JSON.parse(currentApp?.tag).length - 1) {
+                                                        return tag + ', '
+                                                    }
+                                                        return tag
+                                                    })
+                                                }
                                             </p>
                                         </div>
                                     </div>

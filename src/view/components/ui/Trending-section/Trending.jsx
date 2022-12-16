@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import './trending.css'
 import NftCard from '../Nft-card/NftCard'
-// import { TRENDING_DAPPS } from '../../../assets/data/data'
 import { getMarketplaceListings } from '../../../../script/marketplace/utils.js'
 
 const Trending = () => {
