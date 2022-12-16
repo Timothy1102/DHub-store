@@ -51,7 +51,6 @@ const Wallet = () => {
                             <h3 className="trending__title">Selling Items</h3>
                         </Col>
                         {nfts.map((item) => {
-                            console.log('sellingNft: ', sellingNft)
                             item.is_selling = false
                             return (
                                 <>

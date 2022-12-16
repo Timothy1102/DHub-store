@@ -5,17 +5,17 @@ import { Container, Row, Col } from 'reactstrap'
 import { EyeTwoTone, HeartTwoTone, CommentOutlined } from '@ant-design/icons'
 import '../styles/nft-details.css'
 import Modal from '../components/ui/Modal/Modal'
-import ModalTransferNft from '../components/ui/Modal-transfer-nft/ModalTransferNFT'
-import ModalListNft from '../components/ui/Modal-list-nft/ModalListNFT'
 import DefaultComponent from '../components/ui/Comment-section/CommentSection'
-import { getMarketplaceListings } from '../../script/marketplace/utils.js'
+import { getMarketplaceListings, createMarketplace, mintNft } from '../../script/marketplace/utils.js'
 import {truncatAddress} from '../../utils/format'
+import { useWallet } from '@solana/wallet-adapter-react'
 
 const NftDetails = () => {
+    const wallet = useWallet();
+
     const [data, setData] = useState([])
     const { id } = useParams()
     const [showModal, setShowModal] = useState(false)
-    const [showListModal, setShowListModal] = useState(false)
     
     useEffect(() => {
         const getMarketData = async () => {
@@ -109,140 +109,63 @@ const NftDetails = () => {
                                             </h4>
                                         </div>
 
-                                        {currentApp.owner_address === window.accountId && (
-                                            <>
-                                                <div style={{ marginTop: 50 }}>
-                                                    <button
-                                                        className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
-                                                        style={{
-                                                            float: 'left',
-                                                            marginLeft: 380,
-                                                            background: '#e250e5',
-                                                        }}
-                                                    >
-                                                        <i className="ri-close-circle-line"></i>
-                                                        Delist
-                                                    </button>
-                                                </div>
-                                                <div
-                                                    style={{
-                                                        border: '0.2px solid #4d4e4f',
-                                                        borderRadius: 20,
-                                                        marginTop: 130,
-                                                        marginBottom: -100,
-                                                        paddingLeft: 40,
-                                                        paddingRight: 40,
-                                                    }}
-                                                >
-                                                    <h5
-                                                        style={{
-                                                            color: 'orange',
-                                                            marginTop: 20,
-                                                        }}
-                                                    >
-                                                        Offers
-                                                    </h5>
-                                                    <textarea
-                                                        name=""
-                                                        id="offers"
-                                                        rows="3"
-                                                        placeholder=""
-                                                        className="w-100"
-                                                        style={{
-                                                            background: '#06102e',
-                                                            border: 'none',
-                                                            borderRadius: 10,
-                                                            marginBottom: 10,
-                                                        }}
-                                                    ></textarea>
-                                                </div>
-                                            </>
-                                        )}
+                                        <div style={{ marginTop: 50 }}>
+                                            <button
+                                                className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
+                                                style={{
+                                                    float: 'left',
+                                                    marginLeft: 200,
+                                                }}
+                                            >
+                                                Use
+                                            </button>
 
-                                        {currentApp.owner_address === window.accountId && (
-                                            <>
-                                                <div className=" mt-3 d-flex align-items-center " style={{ marginBottom: '-80px', marginTop: 500 }}>
-                                                    <button
-                                                        className="bid__btn d-flex align-items-center gap-1"
-                                                        style={{ marginLeft: 300 }}
-                                                        onClick={() => setShowListModal(true)}
-                                                    >
-                                                        List
-                                                    </button>
-
-                                                    <button
-                                                        className="bid__btn d-flex align-items-center gap-1"
-                                                        style={{
-                                                            marginLeft: 100,
-                                                        }}
-                                                        onClick={() => setShowModal(true)}
-                                                    >
-                                                        Transfer
-                                                    </button>
-                                                    {showModal && <ModalTransferNft setShowModal={setShowModal} app_id={id} />}
-                                                    {showListModal && <ModalListNft setShowListModal={setShowListModal} app_id={id} />}
-                                                </div>
-                                            </>
-                                        )}
-
-                                        {currentApp.owner_address !== window.accountId && (
-                                            <div style={{ marginTop: 50 }}>
-                                                <button
-                                                    className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
-                                                    style={{
-                                                        float: 'left',
-                                                        marginLeft: 200,
-                                                    }}
-                                                >
-                                                    Use
-                                                </button>
-
-                                                {/* {currentApp.users.includes(window.accountId) ? (
-                                                    <>
-                                                        <div
-                                                            className=" d-inline-flex align-items-center gap-2 w-30"
-                                                            style={{
-                                                                float: 'right',
-                                                                marginRight: 200,
-                                                                marginTop: 5,
-                                                                color: 'white',
-                                                            }}
-                                                        >
-                                                            <CheckCircleTwoTone
-                                                                twoToneColor="#52c41a"
-                                                                style={{
-                                                                    fontSize: 30,
-                                                                }}
-                                                            />{' '}
-                                                            Using
-                                                        </div>
-                                                    </>
-                                                ) : (
-                                                    <button
-                                                        className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
+                                            {/* {currentApp.users.includes(window.accountId) ? (
+                                                <>
+                                                    <div
+                                                        className=" d-inline-flex align-items-center gap-2 w-30"
                                                         style={{
                                                             float: 'right',
                                                             marginRight: 200,
+                                                            marginTop: 5,
+                                                            color: 'white',
                                                         }}
                                                     >
-                                                        Use
-                                                    </button>
-                                                )} */}
-
+                                                        <CheckCircleTwoTone
+                                                            twoToneColor="#52c41a"
+                                                            style={{
+                                                                fontSize: 30,
+                                                            }}
+                                                        />{' '}
+                                                        Using
+                                                    </div>
+                                                </>
+                                            ) : (
                                                 <button
                                                     className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
                                                     style={{
                                                         float: 'right',
                                                         marginRight: 200,
                                                     }}
-                                                    onClick={() => setShowModal(true)}
                                                 >
-                                                    Offer
+                                                    Use
                                                 </button>
+                                            )} */}
 
-                                                {showModal && <Modal setShowModal={setShowModal} />}
-                                            </div>
-                                        )}
+                                            <button
+                                                className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
+                                                style={{
+                                                    float: 'right',
+                                                    marginRight: 200,
+                                                }}
+                                                // onClick={() => setShowModal(true)}
+                                                onClick={() => mintNft(wallet)}
+                                            >
+                                                Test
+                                            </button>
+
+                                            {showModal && <Modal setShowModal={setShowModal} />}
+                                        </div>
 
                                         <div
                                             style={{
