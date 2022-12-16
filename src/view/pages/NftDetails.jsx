@@ -109,13 +109,10 @@ const NftDetails = () => {
                                             </h4>
                                         </div>
 
-                                        <div style={{ marginTop: 50 }}>
+                                        <div className='flex justify-center' style={{ marginTop: 50 }}>
                                             <button
                                                 className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
-                                                style={{
-                                                    float: 'left',
-                                                    marginLeft: 200,
-                                                }}
+                                                onClick={() => mintNft(wallet)}
                                             >
                                                 Use
                                             </button>
@@ -151,27 +148,13 @@ const NftDetails = () => {
                                                     Use
                                                 </button>
                                             )} */}
-
-                                            <button
-                                                className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
-                                                style={{
-                                                    float: 'right',
-                                                    marginRight: 200,
-                                                }}
-                                                // onClick={() => setShowModal(true)}
-                                                onClick={() => mintNft(wallet)}
-                                            >
-                                                Test
-                                            </button>
-
-                                            {showModal && <Modal setShowModal={setShowModal} />}
                                         </div>
 
                                         <div
                                             style={{
                                                 border: '0.2px solid #ffa500',
                                                 borderRadius: 20,
-                                                marginTop: 130,
+                                                marginTop: 70,
                                                 paddingLeft: 40,
                                                 paddingRight: 40,
                                                 paddingBottom: 20,
