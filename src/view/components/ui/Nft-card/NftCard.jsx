@@ -6,7 +6,7 @@ import {truncatAddress} from '../../../../utils/format'
 
 const NftCard = ({item}) => {
     const creator = truncatAddress(item?.owner_address)
-    const selling_price = item?.cost_per_m
+    const selling_price = item?.min_m
     const title = item?.name
     const imgUrl = item?.image
     const desc = item?.description

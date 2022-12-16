@@ -92,7 +92,7 @@ const NftDetails = () => {
                                                     fontSize: 25,
                                                 }}
                                             >
-                                                {currentApp.cost_per_m}
+                                                {currentApp.min_m}
                                             </h1>
                                             <h4
                                                 style={{
