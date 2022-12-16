@@ -4,9 +4,8 @@ import { useParams } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap'
 import { EyeTwoTone, HeartTwoTone, CommentOutlined } from '@ant-design/icons'
 import '../styles/nft-details.css'
-import Modal from '../components/ui/Modal/Modal'
 import DefaultComponent from '../components/ui/Comment-section/CommentSection'
-import { getMarketplaceListings, createMarketplace, mintNft } from '../../script/marketplace/utils.js'
+import { getMarketplaceListings, mintNft } from '../../script/marketplace/utils.js'
 import {truncatAddress} from '../../utils/format'
 import { useWallet } from '@solana/wallet-adapter-react'
 
@@ -15,7 +14,6 @@ const NftDetails = () => {
 
     const [data, setData] = useState([])
     const { id } = useParams()
-    const [showModal, setShowModal] = useState(false)
     
     useEffect(() => {
         const getMarketData = async () => {
