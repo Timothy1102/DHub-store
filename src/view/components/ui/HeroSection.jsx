@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './hero-section.css'
@@ -19,7 +18,7 @@ const HeroSection = () => {
 
                             <div className="hero__btns d-flex align-items-center gap-4">
                                 <button className=" create__btn d-flex align-items-center gap-2">
-                                    <i class="ri-apps-line"></i>
+                                    <i className="ri-apps-line"></i>
                                     <a target="_blank" href="/" rel="noreferrer">
                                         For Developers
                                     </a>

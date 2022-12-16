@@ -1,11 +1,22 @@
+import React, {useEffect, useState} from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import MyNftCard from '../My-nft-card/MyNftCard'
 import NftCard from '../Nft-card/NftCard'
 import './live-auction.css'
-import {DAPP__DATA} from '../../../assets/data/data'
+import { getMarketplaceListings } from '../../../../script/marketplace/utils.js'
 
 const LiveAuction = () => {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getMarketData = async () => {
+            const listings = await getMarketplaceListings()
+            setData(listings)
+        }
+        getMarketData()
+    }, [])
+
     return (
         <section>
             <Container>
@@ -19,8 +30,8 @@ const LiveAuction = () => {
                         </div>
                     </Col>
 
-                    {DAPP__DATA.map((item, i) =>
-                        item.owner_id !== '' ? (
+                    {data.map((item, i) =>
+                        item.owner_address !== '' ? (
                             <Col key={i} lg="3" md="4" sm="6" className="mb-4">
                                 <NftCard item={item} />
                             </Col>

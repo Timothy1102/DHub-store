@@ -7,8 +7,44 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { LAMPORTS_PER_SOL } from '@solana/web3.js'
 import { Keypair, SystemProgram, Transaction } from '@solana/web3.js'
 require('@solana/wallet-adapter-react-ui/styles.css')
+// import { useConnection, useWallet } from '@solana/wallet-adapter-react'
+// import * as web3 from '@solana/web3.js'
+// import { LAMPORTS_PER_SOL } from '@solana/web3.js'
 
 function View() {
+    // useEffect(() => {
+    //     console.log('connection: ', connection)
+    //     console.log('publicKey: ', publicKey)
+    //     if (!connection || !publicKey) { return }
+
+    //     connection.getAccountInfo(publicKey).then(info => {
+    //         console.log(info.lamports)
+    //     })
+    // }, [connection, publicKey])
+
+    // const { publicKey, sendTransaction } = useWallet()
+    // const { connection } = useConnection()
+
+    // console.log('publicKey: ', publicKey)
+
+    // const sendSol = () => {
+    //     console.log('test')
+    //     const transaction = new web3.Transaction()
+    //     const recipientPubKey = new web3.PublicKey('G9TyTqxgrzukX43ry3a1yCQWWN9LDXVuedRZdS9nv7s7')
+    //     console.log('recipientPubKey: ', recipientPubKey)
+
+    //     const sendSolInstruction = web3.SystemProgram.transfer({
+    //         fromPubkey: publicKey,
+    //         toPubkey: recipientPubKey,
+    //         lamports: LAMPORTS_PER_SOL * 0.1
+    //     })
+
+    //     transaction.add(sendSolInstruction);
+    //     sendTransaction(transaction, connection).then(sig => {
+    //         console.log(sig)
+    //     })
+    // }
+
     const { connection } = useConnection()
     const { publicKey, sendTransaction } = useWallet()
     const [balance, setBalance] = useState(0)

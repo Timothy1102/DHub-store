@@ -2,14 +2,15 @@ import { Link } from 'react-router-dom'
 import './nft-card.css'
 import { Row, Col } from 'reactstrap'
 import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone } from '@ant-design/icons'
+import {truncatAddress} from '../../../../utils/format'
 
 const NftCard = ({item}) => {
-    const creator = item?.owner_id
-    const selling_price = item?.selling_price
-    const title = item?.metadata?.title
-    const imgUrl = item?.metadata?.media
-    const desc = item?.metadata?.description
-    const tags = item?.metadata?.extra
+    const creator = truncatAddress(item?.owner_address)
+    const selling_price = item?.cost_per_m
+    const title = item?.name
+    const imgUrl = item?.image
+    const desc = item?.description
+    const tags = item?.tag
 
     return (
         <div className="single__nft__card" id="nftcard">
