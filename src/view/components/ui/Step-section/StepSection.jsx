@@ -3,22 +3,12 @@ import './step-section.css'
 
 const STEP__DATA = [
     {
-        title: 'Create dApps',
-        desc: 'Creating your own dApps has never been easier with our platform for developers.',
-        icon: 'ri-drag-drop-line',
-    },
-    {
-        title: 'Audit dApps',
-        desc: 'We help you audit your app to make sure it\'s ready to go live.',
-        icon: 'ri-hammer-line',
-    },
-    {
         title: 'Pubplish dApps',
-        desc: 'Make money by listing your dApps on our Marketplace so that everyone can use or buy them.',
+        desc: 'Make money by listing your dApps on our Marketplace so that everyone can use them.',
         icon: 'ri-money-dollar-circle-line',
     },
     {
-        title: 'Use/Buy dApps',
+        title: 'Use dApps',
         desc: 'Browse dApps developed by our community that fit your needs.',
         icon: 'ri-shopping-cart-line',
     },

@@ -67,6 +67,8 @@ const Header = () => {
 
                     <div className="nav__right d-flex align-items-center gap-5 ">
                         <WalletMultiButton></WalletMultiButton>
+                        {/* wallet address */}
+                        {/* {window.ethereum.selectedAddress} */}
 
                         <span className="mobile__menu">
                             <i className="ri-menu-line" onClick={toggleMenu}></i>
