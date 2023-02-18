@@ -9,7 +9,7 @@ error InvalidLengthError();
 
 contract DHubStore is Ownable {
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIdCounter;
+    Counters.Counter private _idCounter;
 
     // using IPFS or not?
     struct App {
@@ -25,18 +25,19 @@ contract DHubStore is Ownable {
     mapping(address => App[]) public userToApps;
 
     function creatApp(
-        uint256 id,
         string memory name,
         string memory description,
         string memory image,
         string memory bytecode
     ) external onlyOwner {
-        apps.push(App(id, name, description, image, bytecode));
+        uint256 appId = _idCounter.current();
+        _idCounter.increment();
+        apps.push(App(appId, name, description, image, bytecode));
     }
 
     /**
-     * @notice Get all the listed offer with status SELLING
-     * @return Array of offer ids that are listed with status SELLING
+     * @notice Get all listed apps
+     * @return Array of Apps that are listed
      */
     function getAllPurchasableMarketItems() external view returns (App[] memory) {
         return apps;
