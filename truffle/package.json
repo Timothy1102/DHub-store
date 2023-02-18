@@ -1,0 +1,17 @@
+{
+  "name": "dhub_truffle",
+  "version": "1.0.0",
+  "description": "blockchain service for DHub",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Thang",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.1"
+  }
+}
