@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 error TicketNotExist();
 error InvalidLengthError();
 
-contract NftTicket is Ownable {
+contract DHubStore is Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
