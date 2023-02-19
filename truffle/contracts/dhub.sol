@@ -5,36 +5,53 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 error AppNotExist();
+error InvalidAppId();
 error NotAllowedToSeeAppInfo();
 
 contract DHubStore is Ownable {
     using Counters for Counters.Counter;
-    Counters.Counter private _idCounter;
+    Counters.Counter private _appIdCounter;
+    Counters.Counter private _requestedAppIdCounter;
 
-    // using IPFS or not?
     struct App {
         uint256 id;
         string name;
         string description;
         string image;
         string bytecode;
+        address owner;
     }
 
+    // apps that have already been published by admin
     App[] private apps;
+    // apps that have been requested to publish
+    App[] private requestedApps;
 
-    mapping(uint => address) public appIdToOwnerAddressMapper;
+    // user address => apps used by that user
     mapping(address => App[]) private userToAppsMapper;
 
-    function creatApp(
-        string memory name,
-        string memory description,
-        string memory image,
-        string memory bytecode
+    function requestToPublishApp(
+        string memory _name,
+        string memory _description,
+        string memory _image,
+        string memory _bytecode
+    ) external {
+        uint256 appId = _requestedAppIdCounter.current();
+        _requestedAppIdCounter.increment();
+        requestedApps.push(App(appId, _name, _description, _image, _bytecode, msg.sender));
+    }
+
+    function publishApp(
+        uint256 requestedAppId
     ) external onlyOwner {
-        uint256 appId = _idCounter.current();
-        _idCounter.increment();
-        apps.push(App(appId, name, description, image, bytecode));
-        appIdToOwnerAddressMapper[appId] = msg.sender;
+        if (requestedAppId >= requestedApps.length) revert InvalidAppId();
+        for (uint i = 0; i < requestedApps.length; i++) {
+            if (requestedApps[i].id == requestedAppId) {
+                uint256 appId = _appIdCounter.current();
+                _appIdCounter.increment();
+                apps.push(App(appId, requestedApps[i].name, requestedApps[i].description, requestedApps[i].image, requestedApps[i].bytecode, requestedApps[i].owner));
+            }
+        }
     }
 
     /**
@@ -65,7 +82,10 @@ contract DHubStore is Ownable {
      * @return Array of Apps
      */
     function getAppsBelongToUser(address appUserAddress) external view returns (App[] memory) {
-        if (msg.sender != appUserAddress) revert NotAllowedToSeeAppInfo();
+        // revert if caller is not contract owner and attempt to view other address's app info
+        if (msg.sender != owner()) {
+            if (msg.sender != appUserAddress) revert NotAllowedToSeeAppInfo();
+        }
         return userToAppsMapper[appUserAddress];
     }
 }
