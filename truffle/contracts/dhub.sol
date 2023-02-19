@@ -4,8 +4,7 @@ pragma solidity 0.8.17;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-error TicketNotExist();
-error InvalidLengthError();
+error AppNotExist();
 
 contract DHubStore is Ownable {
     using Counters for Counters.Counter;
@@ -22,7 +21,7 @@ contract DHubStore is Ownable {
 
     App[] public apps;
 
-    mapping(address => App[]) public userToApps;
+    mapping(address => App[]) private userToApps;
 
     function creatApp(
         string memory name,
@@ -36,11 +35,31 @@ contract DHubStore is Ownable {
     }
 
     /**
-     * @notice Get all listed apps
+     * @dev user request to use an app
+     */
+    function useApp(uint256 appId) external {
+        if (appId >= apps.length) revert AppNotExist();
+        for (uint i = 0; i < apps.length; i++) {
+            if (apps[i].id == appId) {
+                App[] storage userApps = userToApps[msg.sender];
+                userApps.push(apps[i]);
+            }
+        }
+    }
+
+    /**
+     * @dev Get all listed apps
      * @return Array of Apps that are listed
      */
     function getAllPurchasableMarketItems() external view returns (App[] memory) {
         return apps;
     }
-    
+
+    /**
+     * @dev Get all apps belong to a user
+     * @return Array of Apps
+     */
+    function getAppsBelongToUser() external view returns (App[] memory) {
+        return userToApps[msg.sender];
+    }
 }
