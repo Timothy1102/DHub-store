@@ -1,4 +1,4 @@
-# DHub marketplace on Solana blockchain
+# dApp marketplace on Ethereum blockchain
 
 - Define your own environment variables: `cp .env.dist .env`
 

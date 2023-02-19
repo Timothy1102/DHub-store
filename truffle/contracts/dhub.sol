@@ -17,9 +17,9 @@ contract DHubStore is Ownable {
         uint256 id;
         string name;
         string description;
+        address owner;
         string image;
         string bytecode;
-        address owner;
     }
 
     // apps that have already been published by admin
@@ -38,7 +38,7 @@ contract DHubStore is Ownable {
     ) external {
         uint256 appId = _requestedAppIdCounter.current();
         _requestedAppIdCounter.increment();
-        requestedApps.push(App(appId, _name, _description, _image, _bytecode, msg.sender));
+        requestedApps.push(App(appId, _name, _description, msg.sender, _image, _bytecode));
     }
 
     function publishApp(
@@ -49,7 +49,7 @@ contract DHubStore is Ownable {
             if (requestedApps[i].id == requestedAppId) {
                 uint256 appId = _appIdCounter.current();
                 _appIdCounter.increment();
-                apps.push(App(appId, requestedApps[i].name, requestedApps[i].description, requestedApps[i].image, requestedApps[i].bytecode, requestedApps[i].owner));
+                apps.push(App(appId, requestedApps[i].name, requestedApps[i].description, requestedApps[i].owner, requestedApps[i].image, requestedApps[i].bytecode));
             }
         }
     }
