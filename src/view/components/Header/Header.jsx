@@ -81,7 +81,7 @@ const Header = () => {
                     </div>
 
                     <div className="nav__right d-flex align-items-center gap-5 ">
-                        <button  className="bg-[#3f3f63] rounded-[30px]" onClick={connectWallet}>
+                        <button className=" create__btn d-flex align-items-center gap-2" onClick={connectWallet}>
                             {account ? truncatAddress(account) : 'Connect'}
                         </button>
                         {/* {window.ethereum.selectedAddress} */}

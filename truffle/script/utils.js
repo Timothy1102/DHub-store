@@ -14,12 +14,12 @@ web3.eth.accounts.wallet.add(PRIVATE_KEY); // for transaction signing
 /**
  * Create an app to the smart contract
  */
-async function createApp(id, name, des, image, bytecode) {
+async function createApp(name, des, image, bytecode) {
     console.log('creating app...');
     try {
         const DHubStore = new web3.eth.Contract(DHubStoreArtifact.abi, DHUB_ADDRESS);
         const res =await DHubStore.methods 
-            .creatApp(id, name, des, image, bytecode).send({from: myEOA.address, gasLimit: 5_000_000});
+            .creatApp(name, des, image, bytecode).send({from: myEOA.address, gasLimit: 5_000_000});
         console.log('res: ', res);
 
         return res;
@@ -41,8 +41,8 @@ async function getApps() {
     }
 }
 
-// createApp(2, 'test 2', 'des', 'img', 'code');
-// getApps();
+// createApp('test 2', 'des', 'img', 'code');
+getApps();
 
 module.exports = {
     createApp,
