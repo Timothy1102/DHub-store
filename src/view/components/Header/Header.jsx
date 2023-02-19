@@ -1,13 +1,15 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import './header.css'
 import { Container } from 'reactstrap'
 import { NavLink, Link } from 'react-router-dom'
 import 'antd/dist/antd.css'
 import DHubLogo from '../../assets/images/DHub-Store-light-logo.png'
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
+import {truncatAddress} from '../../../utils/format'
 require('@solana/wallet-adapter-react-ui/styles.css')
 
 const Header = () => {
+
+    const [account, setAccount] = useState(null);
 
     const NAV__LINKS = [
         {
@@ -28,6 +30,8 @@ const Header = () => {
     const menuRef = useRef(null)
 
     useEffect(() => {
+        connectWallet();
+
         window.addEventListener('scroll', () => {
             if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
                 headerRef.current.classList.add('header__shrink')
@@ -36,12 +40,23 @@ const Header = () => {
             }
         })
 
-        return () => {
-            window.removeEventListener('scroll')
-        }
+        // return () => {
+        //     window.removeEventListener('scroll')
+        // }
     }, [])
 
     const toggleMenu = () => menuRef.current.classList.toggle('active__menu')
+
+    const connectWallet = async () => {
+        try {
+            console.log('connecting...');
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            setAccount(accounts[0]);
+            console.log('accounts: ', accounts);
+        } catch (err) {
+            console.log("error: ", err);
+        }
+	}
 
     return (
         <header className="header" ref={headerRef}>
@@ -66,8 +81,9 @@ const Header = () => {
                     </div>
 
                     <div className="nav__right d-flex align-items-center gap-5 ">
-                        <WalletMultiButton></WalletMultiButton>
-                        {/* wallet address */}
+                        <button  className="bg-[#3f3f63] rounded-[30px]" onClick={connectWallet}>
+                            {account ? truncatAddress(account) : 'Connect'}
+                        </button>
                         {/* {window.ethereum.selectedAddress} */}
 
                         <span className="mobile__menu">

@@ -5,10 +5,6 @@ import Trending from "../components/ui/Trending-section/Trending";
 import StepSection from "../components/ui/Step-section/StepSection";
 
 const Home = () => {
-	// promt metamask to connect with DHub
-    window.ethereum.enable().then(function(accounts) {
-        console.log('accounts: ', accounts);
-    });
 
 	return (
 		<>
