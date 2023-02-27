@@ -42,39 +42,15 @@ const Footer = () => {
         <footer className="footer">
             <Container>
                 <Row>
-                    <Col lg="3" md="6" sm="6" className="mb-4">
+                    <Col lg="6" md="6" sm="6" className="mb-4">
                         <div className="logo">
                             <img src={DHubLogo} className='h-[45px]' alt='DHub logo'/>
-                            <p style={{ color: 'gray' }}>Best place for developers, business and dApp users to find partners and develope a better Web3 world.</p>
+                            <p style={{ color: 'gray' }}>dApp Hub for developers and dApp users.</p>
                         </div>
                     </Col>
 
-                    <Col lg="3" md="3" sm="6" className="mb-4">
-                        <h5>Resources</h5>
-                        <ListGroup className="list__group">
-                            {RESOURCES.map((item, index) => (
-                                <ListGroupItem key={index} className="list__item">
-                                    <Link to={item.url}> {item.display} </Link>
-                                </ListGroupItem>
-                            ))}
-                        </ListGroup>
-                    </Col>
-
-                    <Col lg="3" md="3" sm="6" className="mb-4">
-                        <h5>Company</h5>
-                        <ListGroup className="list__group">
-                            {COMPANY.map((item, index) => (
-                                <ListGroupItem key={index} className="list__item">
-                                    <Link to={item.url}> {item.display} </Link>
-                                </ListGroupItem>
-                            ))}
-                        </ListGroup>
-                    </Col>
-
-                    <Col lg="3" md="6" sm="6" className="mb-4">
-                        <h5>Newsletter</h5>
-                        <input type="text" className="newsletter" placeholder="Email" />
-                        <div className="social__links d-flex gap-3 align-items-center ">
+                    <Col lg="6" md="6" sm="6" className="mb-4">
+                        <div className="social__links d-flex gap-3 align-items-center float-right">
                             <span>
                                 <Link to="#">
                                     <i className="ri-facebook-line"></i>

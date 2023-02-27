@@ -2,7 +2,7 @@ import { CheckCircleTwoTone } from '@ant-design/icons'
 import './common-section.css'
 import { Container } from 'reactstrap'
 
-const CommonSection = ({ title, img, verified }) => {
+const CommonSection = ({ title, subTitle, img, verified }) => {
     return (
         <section className="common__section">
             {img && (
@@ -22,6 +22,7 @@ const CommonSection = ({ title, img, verified }) => {
             )}
             <Container className="text-center">
                 <h2 className="font-semibold text-3xl text-white">{title}</h2>
+                <h4 className="font-light text-xl text-white">{subTitle}</h4>
             </Container>
         </section>
     )

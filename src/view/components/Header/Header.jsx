@@ -21,7 +21,7 @@ const Header = () => {
         },
         {
             display: 'PROFILE',
-            url: '/wallet',
+            url: '/profile',
         },
     ]
 

@@ -3,27 +3,20 @@ import { Container, Row, Col } from 'reactstrap'
 import CommonSection from '../components/ui/Common-section/CommonSection'
 import '../styles/create-item.css'
 import { LoadingOutlined } from '@ant-design/icons'
-import { Select } from 'antd'
 
-const Mint = () => {
-
+const SubmitApp = () => {
     return (
         <>
-            <CommonSection title="Mint your NFT" />
+            <CommonSection title="Submit dApp" subTitle="submit your dApp to be reviewed by DHub admin"/>
             <section>
                 <Container>
                     <Row>
                         <Col lg="9" md="8" sm="6" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                             <div className="create__item">
-                                <form className="form">
+                                <form className="form bg-transparent block">
                                     <div className="form__input">
-                                        <label htmlFor="">Title</label>
-                                        <input id="title" type="text" placeholder="Enter title" />
-                                    </div>
-
-                                    <div className="form__input">
-                                        <label htmlFor="">Upload File</label>
-                                        <input type="file" className="upload__input" />
+                                        <label htmlFor="">Name</label>
+                                        <input id="title" type="text" placeholder="Enter dApp name" />
                                     </div>
 
                                     <div className="form__input">
@@ -37,23 +30,20 @@ const Mint = () => {
                                     </div>
 
                                     <div className="form__input">
-                                        <label style={{ display: 'block' }} htmlFor="">
-                                            Contract
-                                        </label>
-                                        <Select
-                                            labelInValue
-                                            style={{
-                                                width: '100%',
-                                            }}
-                                        >
-                                        </Select>
+                                        <label htmlFor="">Image</label>
+                                        <input type="file" className="upload__input" />
+                                    </div>
+
+                                    <div className="form__input">
+                                        <label htmlFor="">Smart Contract</label>
+                                        <input type="file" className="upload__input" />
                                     </div>
                                 </form>
 
                                 <LoadingOutlined id="spin" style={{ color: 'white', fontSize: 35, visibility: 'hidden' }} />
 
                                 <button className="btn d-flex gap-2 align-items-center">
-                                    Mint
+                                    Submit
                                 </button>
                             </div>
                         </Col>
@@ -64,4 +54,4 @@ const Mint = () => {
     )
 }
 
-export default Mint
+export default SubmitApp;

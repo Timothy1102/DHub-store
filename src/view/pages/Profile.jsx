@@ -5,7 +5,7 @@ import CommonSection from '../components/ui/Common-section/CommonSection'
 import { Container, Row, Col } from 'reactstrap'
 import '../styles/wallet.css'
 
-const Wallet = () => {
+const Profile = () => {
     const nfts = [
         {
             is_selling: true,
@@ -144,4 +144,4 @@ const Wallet = () => {
     )
 }
 
-export default Wallet
+export default Profile;
