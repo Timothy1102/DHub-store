@@ -7,11 +7,8 @@ import '../styles/nft-details.css'
 import DefaultComponent from '../components/ui/Comment-section/CommentSection'
 import { getMarketplaceListings, mintNft } from '../../script/marketplace/utils.js'
 import {truncatAddress} from '../../utils/format'
-import { useWallet } from '@solana/wallet-adapter-react'
 
 const NftDetails = () => {
-    const wallet = useWallet();
-
     const [data, setData] = useState([])
     const { id } = useParams()
     
@@ -57,7 +54,7 @@ const NftDetails = () => {
 
                                             <div className=" d-flex align-items-center gap-2 single__nft-more">
                                                 <span style={{fontSize: '1.3rem'}}>
-                                                    <a href="https://solana.com/" target="_blank" rel="noreferrer">
+                                                    <a href="https://google.com/" target="_blank" rel="noreferrer">
                                                         <i className="ri-global-line"></i>
                                                     </a>
                                                 </span>
@@ -110,7 +107,7 @@ const NftDetails = () => {
                                         <div className='flex justify-center' style={{ marginTop: 50 }}>
                                             <button
                                                 className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
-                                                onClick={() => mintNft(wallet)}
+                                                onClick={() => mintNft()}
                                             >
                                                 Use
                                             </button>

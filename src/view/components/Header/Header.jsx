@@ -5,7 +5,6 @@ import { NavLink, Link } from 'react-router-dom'
 import 'antd/dist/antd.css'
 import DHubLogo from '../../assets/images/DHub-Store-light-logo.png'
 import {truncatAddress} from '../../../utils/format'
-require('@solana/wallet-adapter-react-ui/styles.css')
 
 const Header = () => {
 

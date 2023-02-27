@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 error AppNotExist();
 error InvalidAppId();
 error NotAllowedToSeeAppInfo();
+error NotAllowedAccount();
 
 contract DHubStore is Ownable {
     using Counters for Counters.Counter;
@@ -72,8 +73,25 @@ contract DHubStore is Ownable {
      * @dev Get all listed apps
      * @return Array of Apps that are listed
      */
-    function getAllPurchasableMarketItems() external view onlyOwner returns (App[] memory) {
+    function getAllPublishedApps(address _address) external view returns (App[] memory) {
+        if (_address != owner()) revert NotAllowedAccount();
         return apps;
+    }
+
+    /**
+     * @dev Get all requested apps
+     * @return Array of Apps that have been requested
+     */
+    function getAllRequestedApps(address _address) external view returns (App[] memory) {
+        if (_address != owner()) revert NotAllowedAccount();
+        return requestedApps;
+    }
+
+    /**
+     * @dev Get app info
+     */
+    function getAppInfo(uint256 _appId) external view returns (string memory name, string memory description, address owner, string memory image) {
+        return (apps[_appId].name, apps[_appId].description, apps[_appId].owner, apps[_appId].image);
     }
 
     /**
