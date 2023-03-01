@@ -38,6 +38,11 @@ const SubmitApp = () => {
                                         <label htmlFor="">Smart Contract</label>
                                         <input type="file" className="upload__input" />
                                     </div>
+
+                                    <div className="form__input">
+                                        <label htmlFor="">Price</label>
+                                        <input id="price" type="number" placeholder="Enter dApp using price" />
+                                    </div>
                                 </form>
 
                                 <LoadingOutlined id="spin" style={{ color: 'white', fontSize: 35, visibility: 'hidden' }} />

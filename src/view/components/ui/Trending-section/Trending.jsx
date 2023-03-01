@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import './trending.css'
-import NftCard from '../Nft-card/NftCard'
+import AppCard from '../App-card/AppCard'
 import { getMarketplaceListings } from '../../../../script/marketplace/utils.js'
 
 const Trending = () => {
@@ -25,7 +25,7 @@ const Trending = () => {
 
                     {data.map((item) => (
                         <Col lg="3" md="4" sm="6" key={item.app_id} className="mb-4">
-                            <NftCard item={item} />
+                            <AppCard item={item} />
                         </Col>
                     ))}
                 </Row>

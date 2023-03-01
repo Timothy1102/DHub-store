@@ -16,8 +16,8 @@ const Header = () => {
             url: '/home',
         },
         {
-            display: 'MARKET',
-            url: '/market',
+            display: 'STORE',
+            url: '/store',
         },
         {
             display: 'PROFILE',
@@ -81,7 +81,7 @@ const Header = () => {
 
                     <div className="nav__right d-flex align-items-center gap-5 ">
                         <button className=" create__btn d-flex align-items-center gap-2" onClick={connectWallet}>
-                            {account ? truncatAddress(account) : 'Connect'}
+                            <span className='my-[-15px] mx-3'>{account ? truncatAddress(account) : 'Connect'}</span>
                         </button>
                         {/* {window.ethereum.selectedAddress} */}
 

@@ -1,17 +1,19 @@
 import { Link } from 'react-router-dom'
-import './nft-card.css'
+import './app-card.css'
 import { Row, Col } from 'reactstrap'
-import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone } from '@ant-design/icons'
+import { Tag } from 'antd';
+import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone, CheckCircleOutlined } from '@ant-design/icons'
 import {truncatAddress} from '../../../../utils/format'
 const Web3 = require('web3');
 
-const NftCard = ({item}) => {
+const AppCard = ({item}) => {
     const creator = truncatAddress(item?.owner_address)
-    const selling_price = item?.min_m
+    const selling_price = item?.price
     const title = item?.name
     const imgUrl = item?.image
     const desc = item?.description
-    const tags = JSON.parse(item?.tag)
+    const tag = item?.tag
+    const isUsing = item?.isUsing
 
     const sendTx = async () => {
         let web3 = new Web3(window.ethereum);
@@ -78,13 +80,14 @@ const NftCard = ({item}) => {
                                     color: '#39a68c',
                                 }}
                             >
-                                {tags.map((tag, i) => {
+                                {/* {tags.map((tag, i) => {
                                     // Re-formatting
                                     if (i !== tags.length - 1) {
                                         return tag + ', '
                                     }
                                     return tag
-                                })}
+                                })} */}
+                                {tag}
                             </p>
                         </div>
                     </Col>
@@ -120,36 +123,24 @@ const NftCard = ({item}) => {
                     <div>
                         <p className='font-semibold mb-0' style={{color: 'orange'}}>
                             <span className='text-xl'>{selling_price}</span>
-                            <span className='font-bold' style={{color: '#b1b3b1'}}> SOL</span>
+                            <span className='font-bold' style={{color: '#b1b3b1'}}> ETH</span>
                         </p>
                     </div>
                     <div>
-                        <button className="bid__btn font-semibold" onClick={sendTx}>
-                            Use App
-                        </button>
+                        {isUsing ? (
+                            <Tag icon={<CheckCircleOutlined />} color="success" style={{borderRadius: 15 }}>
+                                Using
+                            </Tag>
+                        ) : (
+                            <button className="bid__btn font-semibold" onClick={sendTx}>
+                                Use App
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
-
-            {/* {is_selling && (
-                <div className=" d-inline-flex align-items-center justify-content-between">
-                    <button className="bid__btn d-flex align-items-center gap-1">
-                        Buy
-                    </button>
-
-                    {(isUsing) ? (
-                        <Tag icon={<CheckCircleOutlined />} color="success" style={{ marginLeft: 130, borderRadius: 15 }}>
-                            Using
-                        </Tag>
-                    ) : (
-                        <button className="bid__btn d-flex align-items-center gap-1" style={{ marginLeft: 120 }}>
-                            Use
-                        </button>
-                    )}
-                </div>
-            )} */}
         </div>
     )
 }
 
-export default NftCard
+export default AppCard;

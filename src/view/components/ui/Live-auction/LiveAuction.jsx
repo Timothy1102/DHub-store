@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import MyNftCard from '../My-nft-card/MyNftCard'
-import NftCard from '../Nft-card/NftCard'
+import MyAppCard from '../My-app-card/MyAppCard'
+import AppCard from '../App-card/AppCard'
 import './live-auction.css'
 import { getMarketplaceListings } from '../../../../script/marketplace/utils.js'
 
@@ -12,6 +12,7 @@ const LiveAuction = () => {
     useEffect(() => {
         const getMarketData = async () => {
             const listings = await getMarketplaceListings()
+            console.log(listings)
             setData(listings)
         }
         getMarketData()
@@ -23,7 +24,7 @@ const LiveAuction = () => {
                 <Row>
                     <Col lg="12" className="mb-5">
                         <div className="live__auction__top d-flex align-items-center justify-content-between ">
-                            <h3 className='text-2xl font-semibold'>Most Popular</h3>
+                            <h3 className="text-2xl font-semibold">Most Popular</h3>
                             <span>
                                 <Link to="/market">Explore more</Link>
                             </span>
@@ -33,11 +34,11 @@ const LiveAuction = () => {
                     {data.map((item, i) =>
                         item.owner_address !== '' ? (
                             <Col key={i} lg="3" md="4" sm="6" className="mb-4">
-                                <NftCard item={item} />
+                                <AppCard item={item} />
                             </Col>
                         ) : (
                             <Col key={i} lg="3" md="4" sm="6" className="mb-4">
-                                <MyNftCard item={item} />
+                                <MyAppCard item={item} />
                             </Col>
                         ),
                     )}

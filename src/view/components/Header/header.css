@@ -58,6 +58,16 @@
     font-size: 0.8rem !important;
 }
 
+.create__btn {
+    /* border: none;
+    outline: none; */
+    padding: 0px 0px !important;
+    /* border-radius: 50px !important;
+    border: 1px solid #6d63e0 !important;
+    font-size: 0.9rem;
+    background: transparent; */
+}
+
 .mobile__menu {
     color: #fff;
     font-size: 1.3rem;

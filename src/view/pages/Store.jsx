@@ -1,11 +1,23 @@
+import { useEffect, useState } from 'react'
 import CommonSection from '../components/ui/Common-section/CommonSection'
-import NftCard from '../components/ui/Nft-card/NftCard'
-import MyNftCard from '../components/ui/My-nft-card/MyNftCard'
+import AppCard from '../components/ui/App-card/AppCard'
+import MyAppCard from '../components/ui/My-app-card/MyAppCard'
 import { Container, Row, Col } from 'reactstrap'
 import '../styles/market.css'
-import { DAPP__DATA } from '../assets/data/data'
+import { getMarketplaceListings } from '../../script/marketplace/utils.js'
 
-const Market = () => {
+const Store = () => {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getMarketData = async () => {
+            const listings = await getMarketplaceListings()
+            console.log(listings)
+            setData(listings)
+        }
+        getMarketData()
+    }, [])
+
     return (
         <>
             <CommonSection title={'MarketPlace'} />
@@ -20,8 +32,8 @@ const Market = () => {
                                             <option>All Categories</option>
                                             <option value="art">NFT</option>
                                             <option value="music">Staking</option>
-                                            <option value="domain-name">RUST</option>
-                                            <option value="virtual-world">AssemblyScript</option>
+                                            <option value="domain-name">Etherum</option>
+                                            <option value="virtual-world">BSC</option>
                                             <option value="trending-card">Voting</option>
                                             <option value="trending-card">Whitelist</option>
                                             <option value="trending-card">Token</option>
@@ -49,31 +61,15 @@ const Market = () => {
                             </div>
                         </Col>
 
-                        {DAPP__DATA?.map((item) =>
-                            item.owner_id !== window.accountId ? (
-                                <>
-                                    <Col lg="3" md="4" sm="6" className="mb-4" key={item.app_id}>
-                                        <NftCard item={item} />
-                                    </Col>
-                                </>
+                        {data.map((item, i) =>
+                            item.owner_address !== '' ? (
+                                <Col key={i} lg="3" md="4" sm="6" className="mb-4">
+                                    <AppCard item={item} />
+                                </Col>
                             ) : (
-                                <>
-                                    <Col lg="3" md="4" sm="6" className="mb-4" key={item.app_id}>
-                                        <MyNftCard
-                                            item={{
-                                                title: item.itemData.metadata.title,
-                                                id: item.app_id,
-                                                creator: item.owner_id,
-                                                tags: item.itemData.metadata.extra,
-                                                desc: item.itemData.metadata.description,
-                                                is_selling: true,
-                                                selling_price: item.sale_conditions,
-                                                using_price: item.use_condition,
-                                                imgUrl: item.itemData.metadata.media,
-                                            }}
-                                        />
-                                    </Col>
-                                </>
+                                <Col key={i} lg="3" md="4" sm="6" className="mb-4">
+                                    <MyAppCard item={item} />
+                                </Col>
                             ),
                         )}
                     </Row>
@@ -83,4 +79,4 @@ const Market = () => {
     )
 }
 
-export default Market
+export default Store;

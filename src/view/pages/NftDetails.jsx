@@ -178,14 +178,15 @@ const NftDetails = () => {
                                                     color: 'cyan',
                                                 }}
                                             >
-                                                {currentApp.tag && JSON.parse(currentApp?.tag).map((tag, i) => {
+                                                {/* {currentApp.tag && JSON.parse(currentApp?.tag).map((tag, i) => {
                                                     // Re-formatting
                                                     if (i !== JSON.parse(currentApp?.tag).length - 1) {
                                                         return tag + ', '
                                                     }
                                                         return tag
                                                     })
-                                                }
+                                                } */}
+                                                {currentApp.tag}
                                             </p>
                                         </div>
                                     </div>

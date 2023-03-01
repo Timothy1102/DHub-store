@@ -1,41 +1,7 @@
 import DHubLogo from '../../assets/images/DHub-Store-light-logo.png'
-import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import './footer.css'
 import { Link } from 'react-router-dom'
-
-const RESOURCES = [
-    {
-        display: 'Help Center',
-        url: '#',
-    },
-    {
-        display: 'Partner',
-        url: '#',
-    },
-    {
-        display: 'Community',
-        url: '#',
-    },
-    {
-        display: 'Activity',
-        url: '#',
-    },
-]
-
-const COMPANY = [
-    {
-        display: 'About',
-        url: '#',
-    },
-    {
-        display: 'Career',
-        url: '#',
-    },
-    {
-        display: 'Contact Us',
-        url: '/contact',
-    },
-]
 
 const Footer = () => {
     return (
