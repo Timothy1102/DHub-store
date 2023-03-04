@@ -3,9 +3,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home";
 import Store from "../pages/Store";
 import SubmitApp from "../pages/SubmitApp";
-import Contact from "../pages/Contact";
 import Profile from "../pages/Profile";
-import NftDetails from "../pages/NftDetails";
+import AppDetails from "../pages/AppDetails";
 
 const Routers = () => {
   return (
@@ -14,9 +13,8 @@ const Routers = () => {
       <Route path="/home" element={<Home />} />
       <Route path="/store" element={<Store />} />
       <Route path="/submit-app" element={<SubmitApp />} />
-      <Route path="/contact" element={<Contact />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/market/:id" element={<NftDetails />} />
+      <Route path="/store/:id" element={<AppDetails />} />
     </Routes>
   );
 };

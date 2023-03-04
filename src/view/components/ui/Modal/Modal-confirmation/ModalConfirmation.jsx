@@ -1,6 +1,10 @@
 import "./modal-confirmation.css";
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 
-const ModalConfirmation = ({ setShowModal, title, subTitle }) => {
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+const ModalConfirmation = ({ setShowModal, title, subTitle, buttonOnClick }) => {
   return (
     <div className="modal__wrapper">
       <div className="single__modal">
@@ -12,12 +16,15 @@ const ModalConfirmation = ({ setShowModal, title, subTitle }) => {
           {subTitle}
         </p>
 
-        {/* <div className="input__item mb-4">
-          <input type="number" placeholder="" />
-        </div> */}
-
-        <button className="place__bid-btn" onClick={() => setShowModal(false)}>Cancel</button>
-        <button className="place__bid-btn" onClick={() => setShowModal(false)}>Continue</button>
+        <div className="flex">
+          <button className="cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
+          <button className="confirm-btn" onClick={() => buttonOnClick()}>
+            <div className="flex gap-2 justify-center items-center">
+              <span>Continue</span>
+              <Spin indicator={antIcon} />
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   );

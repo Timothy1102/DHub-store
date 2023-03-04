@@ -17,10 +17,15 @@ contract DHubStore is Ownable {
     struct App {
         uint256 id;
         string name;
-        string description;
         address owner;
+        string description;
         string image;
-        string bytecode;
+        string website;
+        string github;
+        string discord;
+        string telegram;
+        string smartContractUrl;
+        uint256 usingPrice;
     }
 
     // apps that have already been published by admin
@@ -35,22 +40,79 @@ contract DHubStore is Ownable {
         string memory _name,
         string memory _description,
         string memory _image,
-        string memory _bytecode
+        string memory _website,
+        string memory _github,
+        string memory _discord,
+        string memory _telegram,
+        string memory _smartContractUrl,
+        uint256 _usingPrice
     ) external {
         uint256 appId = _requestedAppIdCounter.current();
         _requestedAppIdCounter.increment();
-        requestedApps.push(App(appId, _name, _description, msg.sender, _image, _bytecode));
+        requestedApps.push(App(
+            appId,
+            _name,
+            msg.sender,
+            _description,
+            _image,
+            _website,
+            _github,
+            _discord,
+            _telegram,
+            _smartContractUrl,
+            _usingPrice
+        ));
     }
 
+    /**
+     * @dev admin publishes an app to the store
+     */
     function publishApp(
         uint256 requestedAppId
     ) external onlyOwner {
-        if (requestedAppId >= requestedApps.length) revert InvalidAppId();
         for (uint i = 0; i < requestedApps.length; i++) {
             if (requestedApps[i].id == requestedAppId) {
                 uint256 appId = _appIdCounter.current();
                 _appIdCounter.increment();
-                apps.push(App(appId, requestedApps[i].name, requestedApps[i].description, requestedApps[i].owner, requestedApps[i].image, requestedApps[i].bytecode));
+                apps.push(App(
+                    appId,
+                    requestedApps[i].name,
+                    requestedApps[i].owner, 
+                    requestedApps[i].description,
+                    requestedApps[i].image,
+                    requestedApps[i].website,
+                    requestedApps[i].github,
+                    requestedApps[i].discord,
+                    requestedApps[i].telegram,
+                    requestedApps[i].smartContractUrl,
+                    requestedApps[i].usingPrice
+                ));
+            }
+        }
+        removeAppFromRequestedApps(requestedAppId);
+    }
+
+    /**
+     * @dev admin rejects to publish an app to the store
+     */
+    function rejectApp(uint256 _appId) external onlyOwner {
+        removeAppFromRequestedApps(_appId);
+    }
+
+    /**
+     * @dev remove an app from requested apps queue by app id
+     */
+    function removeAppFromRequestedApps(uint256 _appId) internal {
+        for (uint i = 0; i < requestedApps.length; i++) {
+            if (requestedApps[i].id == _appId) {
+                if (i == requestedApps.length - 1) {
+                    requestedApps.pop();
+                } else {
+                    for (uint j = i; j < requestedApps.length - 1; j++) {
+                        requestedApps[j] = requestedApps[j+1];
+                    }
+                    requestedApps.pop();
+                }
             }
         }
     }
@@ -90,8 +152,22 @@ contract DHubStore is Ownable {
     /**
      * @dev Get app info
      */
-    function getAppInfo(uint256 _appId) external view returns (string memory name, string memory description, address owner, string memory image) {
-        return (apps[_appId].name, apps[_appId].description, apps[_appId].owner, apps[_appId].image);
+    function getAppInfo(uint256 _appId) external view returns (
+        string memory name,
+        string memory description,
+        address owner,
+        string memory image,
+        string memory github,
+        string memory discord,
+        uint256 usingPrice
+    ) {
+        return (apps[_appId].name,
+                apps[_appId].description,
+                apps[_appId].owner,
+                apps[_appId].image,
+                apps[_appId].github,
+                apps[_appId].discord,
+                apps[_appId].usingPrice);
     }
 
     /**

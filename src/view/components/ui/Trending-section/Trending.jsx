@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import './trending.css'
 import AppCard from '../App-card/AppCard'
-import { getMarketplaceListings } from '../../../../script/marketplace/utils.js'
+import { getMarketplaceListings } from '../../../../controller/utils.js'
 
 const Trending = () => {
     const [data, setData] = useState([])

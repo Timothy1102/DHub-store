@@ -3,7 +3,7 @@
         font-size: 0.8rem !important;
     }
 
-    .bid__btn {
+    .use__btn {
         padding: 4px 20px !important;
         font-size: 0.6rem !important;
     }
@@ -12,7 +12,7 @@
     }
 }
 
-.bid__btn {
+.use__btn {
     border: none;
     outline: none;
     padding: 5px 22px;
@@ -24,7 +24,7 @@
     background: #3f3f63;
 }
 
-.bid__btn:hover {
+.use__btn:hover {
     background: #fff;
     color: #5142fc;
 }

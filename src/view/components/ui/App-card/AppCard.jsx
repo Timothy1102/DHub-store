@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap'
 import { Tag } from 'antd';
 import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone, CheckCircleOutlined } from '@ant-design/icons'
 import {truncatAddress} from '../../../../utils/format'
-const Web3 = require('web3');
+import {sendTx} from '../../../../controller/utils'
 
 const AppCard = ({item}) => {
     const creator = truncatAddress(item?.owner_address)
@@ -15,44 +15,12 @@ const AppCard = ({item}) => {
     const tag = item?.tag
     const isUsing = item?.isUsing
 
-    const sendTx = async () => {
-        let web3 = new Web3(window.ethereum);
-
-        // fetch contract artifact from IPFS
-        const bytecode = await fetch('https://nftstorage.link/ipfs/bafybeig5wqmxma2tmk6robiyikfi5ejnmfujm3ebgke3lhpzy3xuy7v7u4');
-        const artifact = await bytecode.json();
-        console.log('done fetching artifact')
-
-        const contractABI = artifact.abi;
-        const contractAddress = "0x6B279487D318E3A569fA042F049E28B6D3552F33";
-        const contract = new web3.eth.Contract(contractABI, contractAddress);
-
-        const functionToCall = contract.methods.creatApp('test', 'des', 'img', 'code');
-        console.log('done calling function')
-        const gasLimit = 5000000;
-        const gasPrice = await web3.eth.getGasPrice();
-        const transactionObject = {
-            from: await web3.eth.getCoinbase(),
-            to: contractAddress,
-            gasLimit: web3.utils.toHex(gasLimit),
-            gasPrice: web3.utils.toHex(gasPrice),
-            data: functionToCall.encodeABI()
-        };
-
-        const txHash = await window.ethereum.request({
-            method: 'eth_sendTransaction',
-            params: [transactionObject]
-        });
-
-        console.log('txHash: ', txHash);
-    }
-
     return (
         <div className="single__nft__card" id="nftcard">
             <div className="nft__content ">
                 <Row>
                     <Col lg="3" style={{ marginRight: 7 }}>
-                        <a href={`/market/${title}`}>
+                        <a href={`/store/${title}`}>
                             <img
                                 src={imgUrl}
                                 alt="nft thumbnail"
@@ -68,7 +36,7 @@ const AppCard = ({item}) => {
                     </Col>
                     <Col>
                         <h5 className="nft__title d-inline-flex mb-0">
-                            <Link style={{ color: 'white', fontSize: 20 , fontWeight: 600}} to={`/market/${title}`}>
+                            <Link style={{ color: 'white', fontSize: 20 , fontWeight: 600}} to={`/store/${title}`}>
                                 {title}
                             </Link>
                         </h5>
@@ -120,23 +88,25 @@ const AppCard = ({item}) => {
 
             <div className="d-flex gap-3" style={{ marginTop: 10 }}>
                 <div className="w-100 d-flex align-items-center justify-content-between">
+                {isUsing ? 
+                    <Tag icon={<CheckCircleOutlined />} color="success" style={{borderRadius: 15 }}>
+                        Using
+                    </Tag>
+                    :
                     <div>
-                        <p className='font-semibold mb-0' style={{color: 'orange'}}>
-                            <span className='text-xl'>{selling_price}</span>
-                            <span className='font-bold' style={{color: '#b1b3b1'}}> ETH</span>
-                        </p>
-                    </div>
-                    <div>
-                        {isUsing ? (
-                            <Tag icon={<CheckCircleOutlined />} color="success" style={{borderRadius: 15 }}>
-                                Using
-                            </Tag>
-                        ) : (
-                            <button className="bid__btn font-semibold" onClick={sendTx}>
+                        <div>
+                            <p className='font-semibold mb-0' style={{color: 'orange'}}>
+                                <span className='text-xl'>{selling_price}</span>
+                                <span className='font-bold' style={{color: '#b1b3b1'}}> ETH</span>
+                            </p>
+                        </div>
+                        <div>
+                            <button className="use__btn font-semibold" onClick={sendTx}>
                                 Use App
                             </button>
-                        )}
+                        </div>
                     </div>
+                }
                 </div>
             </div>
         </div>

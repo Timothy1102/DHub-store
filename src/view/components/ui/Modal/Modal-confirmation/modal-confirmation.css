@@ -39,8 +39,29 @@
   font-size: 0.8rem;
 }
 
+.ant-spin {
+  color: white !important;
+}
 
-.place__bid-btn {
+.ant-spin:hover {
+  color: #5142fc !important;
+}
+
+.cancel-btn {
+  padding: 7px 25px;
+  border: none;
+  outline: none;
+  width: 100px;
+  margin: auto;
+  background: #bbb8b8;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 15px;
+}
+
+.confirm-btn {
   padding: 7px 25px;
   border: none;
   outline: none;
@@ -52,6 +73,16 @@
   font-size: 0.8rem;
   display: block;
   margin-top: 15px;
+}
+
+.confirm-btn:hover {
+  background: #fff;
+  color: #5142fc;
+}
+
+.cancel-btn:hover {
+  background: #fff;
+  color: #5142fc;
 }
 
 .close__modal {

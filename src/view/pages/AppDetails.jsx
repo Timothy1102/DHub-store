@@ -5,13 +5,13 @@ import { Container, Row, Col } from 'reactstrap'
 import { EyeTwoTone, HeartTwoTone, CommentOutlined } from '@ant-design/icons'
 import '../styles/nft-details.css'
 import DefaultComponent from '../components/ui/Comment-section/CommentSection'
-import { getMarketplaceListings, mintNft } from '../../script/marketplace/utils.js'
-import {truncatAddress} from '../../utils/format'
+import { getMarketplaceListings, mintNft } from '../../controller/utils.js'
+import { truncatAddress } from '../../utils/format'
 
-const NftDetails = () => {
+const AppDetails = () => {
     const [data, setData] = useState([])
     const { id } = useParams()
-    
+
     useEffect(() => {
         const getMarketData = async () => {
             const listings = await getMarketplaceListings()
@@ -31,8 +31,8 @@ const NftDetails = () => {
         <>
             {currentApp !== undefined && (
                 <>
-                    <CommonSection title={currentApp.name} img={currentApp.image} verified={true}/>
-                    <section style={{ paddingTop: 30, marginBottom: 100 }}>
+                    <CommonSection title={currentApp.name} img={currentApp.image} verified={true} />
+                    <section style={{ paddingTop: 30}}>
                         <Container>
                             <Row>
                                 <Col
@@ -47,27 +47,30 @@ const NftDetails = () => {
                                     <div className="single__nft__content">
                                         <div className=" d-flex align-items-center justify-content-between mt-4 mb-4">
                                             <div className=" d-flex align-items-center gap-3 single__nft-seen">
-                                                <EyeTwoTone style={{fontSize: '1.5rem'}} twoToneColor="#ffa500" /> <span style={{fontSize: '1rem'}}>53</span>
-                                                <HeartTwoTone style={{fontSize: '1.5rem'}} twoToneColor="#eb2f96" /> <span style={{fontSize: '1rem'}}>34</span>
-                                                <CommentOutlined style={{fontSize: '1.5rem'}} twoToneColor="#52c41a" /> <span style={{fontSize: '1rem'}}>4</span>
+                                                <EyeTwoTone style={{ fontSize: '1.5rem' }} twoToneColor="#ffa500" />{' '}
+                                                <span style={{ fontSize: '1rem' }}>53</span>
+                                                <HeartTwoTone style={{ fontSize: '1.5rem' }} twoToneColor="#eb2f96" />{' '}
+                                                <span style={{ fontSize: '1rem' }}>34</span>
+                                                <CommentOutlined style={{ fontSize: '1.5rem' }} twoToneColor="#52c41a" />{' '}
+                                                <span style={{ fontSize: '1rem' }}>4</span>
                                             </div>
 
                                             <div className=" d-flex align-items-center gap-2 single__nft-more">
-                                                <span style={{fontSize: '1.3rem'}}>
+                                                <span style={{ fontSize: '1.3rem' }}>
                                                     <a href="https://google.com/" target="_blank" rel="noreferrer">
                                                         <i className="ri-global-line"></i>
                                                     </a>
                                                 </span>
-                                                <span style={{fontSize: '1.3rem'}}>
+                                                <span style={{ fontSize: '1.3rem' }}>
                                                     <i className="ri-send-plane-line"></i>
                                                 </span>
-                                                <span style={{fontSize: '1.3rem'}}>
+                                                <span style={{ fontSize: '1.3rem' }}>
                                                     <i className="ri-discord-fill"></i>
                                                 </span>
-                                                <span style={{fontSize: '1.3rem'}}>
+                                                <span style={{ fontSize: '1.3rem' }}>
                                                     <i className="ri-github-fill"></i>
                                                 </span>
-                                                <span style={{fontSize: '1.3rem'}}>
+                                                <span style={{ fontSize: '1.3rem' }}>
                                                     <i className="ri-more-2-line"></i>
                                                 </span>
                                             </div>
@@ -80,7 +83,7 @@ const NftDetails = () => {
                                             </div>
                                         </div>
 
-                                        <div className='inline ml-[150px]'>
+                                        <div className="inline ml-[150px]">
                                             <h1
                                                 style={{
                                                     color: 'white',
@@ -100,15 +103,12 @@ const NftDetails = () => {
                                                     fontSize: 20,
                                                 }}
                                             >
-                                                SOL
+                                                0.32 ETH
                                             </h4>
                                         </div>
 
-                                        <div className='flex justify-center' style={{ marginTop: 50 }}>
-                                            <button
-                                                className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
-                                                onClick={() => mintNft()}
-                                            >
+                                        <div className="flex justify-center" style={{ marginTop: 50 }}>
+                                            <button className="singleNft-btn d-inline-flex align-items-center gap-2 w-30" onClick={() => mintNft()}>
                                                 Use
                                             </button>
 
@@ -197,10 +197,9 @@ const NftDetails = () => {
                 </>
             )}
 
-            <DefaultComponent/>
-
+            <DefaultComponent />
         </>
     )
 }
 
-export default NftDetails
+export default AppDetails

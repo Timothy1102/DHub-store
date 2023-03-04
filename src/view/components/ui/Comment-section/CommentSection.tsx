@@ -8,7 +8,7 @@ const CustomComponent = () => {
     {
       userId: '01a',
       comId: '012',
-      fullName: 'Riya Negi',
+      fullName: '0x9D3...8B4',
       avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
       text: 'Great dApp! ',
@@ -17,7 +17,7 @@ const CustomComponent = () => {
           userId: '02a',
           comId: '013',
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
-          fullName: 'Adam Scott',
+          fullName: '0x76B...15A',
           avatarUrl: 'https://ui-avatars.com/api/name=Adam&background=random',
           text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰'
         },

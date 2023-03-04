@@ -4,7 +4,7 @@ import AppCard from '../components/ui/App-card/AppCard'
 import MyAppCard from '../components/ui/My-app-card/MyAppCard'
 import { Container, Row, Col } from 'reactstrap'
 import '../styles/market.css'
-import { getMarketplaceListings } from '../../script/marketplace/utils.js'
+import { getMarketplaceListings } from '../../controller/utils.js'
 
 const Store = () => {
     const [data, setData] = useState([])
@@ -20,7 +20,7 @@ const Store = () => {
 
     return (
         <>
-            <CommonSection title={'MarketPlace'} />
+            <CommonSection title={'dApp Store'} />
             <section>
                 <Container>
                     <Row>
@@ -79,4 +79,4 @@ const Store = () => {
     )
 }
 
-export default Store;
+export default Store

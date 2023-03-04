@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import MyAppCard from '../My-app-card/MyAppCard'
 import AppCard from '../App-card/AppCard'
 import './live-auction.css'
-import { getMarketplaceListings } from '../../../../script/marketplace/utils.js'
+import { getMarketplaceListings } from '../../../../controller/utils.js'
 
 const LiveAuction = () => {
     const [data, setData] = useState([])
