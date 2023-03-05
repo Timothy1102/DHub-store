@@ -4,11 +4,50 @@ import CommonSection from '../components/ui/Common-section/CommonSection'
 import '../styles/create-item.css'
 import { LoadingOutlined } from '@ant-design/icons'
 import ModalConfirmation from '../components/ui/Modal/Modal-confirmation/ModalConfirmation'
-// import ModalResult from '../components/ui/Modal/Modal-result/ModalResult'
-import {sendTx} from '../../controller/utils'
+import ModalResult from '../components/ui/Modal/Modal-result/ModalResult'
+import {submitApp} from '../../controller/utils'
 
 const SubmitApp = () => {
-    const [showModalConfirmation, setShowModalConfirmation] = useState(false)
+    const [showModalConfirmation, setShowModalConfirmation] = useState(false);
+    const [showModalResult, setShowModalResult] = useState(false);
+    const [txHash, setTxHash] = useState('');
+    const [formData, setFormData] = useState({
+        name: '',
+        description: '',
+        image: null,
+        smartContract: null,
+        tags: '',
+        website: '',
+        github: '',
+        discord: '',
+        telegram: '',
+        usingPrice: null,
+    });
+
+    const getFormData = () => {
+        const desc = document.getElementById("desc");
+        setFormData({...formData, description: desc.value})
+        console.log('formData :', formData);
+    };
+
+    const submit = async () => {
+        getFormData();
+        const res = await submitApp(
+            formData.name,
+            formData.description,
+            formData.image,
+            formData.tags,
+            formData.website,
+            formData.github,
+            formData.discord,
+            formData.telegram,
+            formData.smartContract,
+            formData.usingPrice,
+        );
+        console.log('submit done');
+        setTxHash(res);
+        setShowModalResult(true);
+    }
 
     return (
         <>
@@ -21,7 +60,7 @@ const SubmitApp = () => {
                                 <form className="form bg-transparent block">
                                     <div className="form__input">
                                         <label htmlFor="">Name</label>
-                                        <input id="title" type="text" placeholder="Enter dApp name" />
+                                        <input id="title" type="text" placeholder="Enter dApp name" onChange={e => setFormData({...formData, name: e.target.value})} />
                                     </div>
 
                                     <div className="form__input">
@@ -31,40 +70,40 @@ const SubmitApp = () => {
 
                                     <div className="form__input">
                                         <label htmlFor="">Tags</label>
-                                        <textarea name="" id="tags" rows="1" placeholder="Enter tags" className="w-100"></textarea>
+                                        <input id="tags" type="text" placeholder="Enter tags" onChange={e => setFormData({...formData, tags: e.target.value})} />
                                     </div>
 
                                     <div className="form__input">
                                         <label htmlFor="">Website</label>
-                                        <textarea name="" id="website" rows="1" placeholder="Enter your external website for the dApp" className="w-100"></textarea>
+                                        <input id="website" type="text" placeholder="Enter your external website for the dApp" onChange={e => setFormData({...formData, website: e.target.value})} />
                                     </div>
 
                                     <div className="form__input">
                                         <label htmlFor="">Github</label>
-                                        <textarea name="" id="website" rows="1" placeholder="Enter your github repository link" className="w-100"></textarea>
+                                        <input id="github" type="text" placeholder="Enter your github repository link" onChange={e => setFormData({...formData, github: e.target.value})} />
                                     </div>
                                     <div className="form__input">
                                         <label htmlFor="">Discord</label>
-                                        <textarea name="" id="website" rows="1" placeholder="Enter your discord channel (optional)" className="w-100"></textarea>
+                                        <input id="discord" type="text" placeholder="Enter your discord channel (optional)" onChange={e => setFormData({...formData, discord: e.target.value})} />
                                     </div>
                                     <div className="form__input">
                                         <label htmlFor="">Telegram</label>
-                                        <textarea name="" id="website" rows="1" placeholder="Enter your telegram group (optional)" className="w-100"></textarea>
+                                        <input id="telegram" type="text" placeholder="Enter your telegram group (optional)" onChange={e => setFormData({...formData, telegram: e.target.value})} />
                                     </div>
 
                                     <div className="form__input">
                                         <label htmlFor="">Image</label>
-                                        <input type="file" className="upload__input" />
+                                        <input type="file" className="upload__input" onChange={e => setFormData({...formData, image: e.target.value})} />
                                     </div>
 
                                     <div className="form__input">
                                         <label htmlFor="">Smart Contract</label>
-                                        <input type="file" className="upload__input" />
+                                        <input type="file" className="upload__input" onChange={e => setFormData({...formData, smartContract: e.target.value})}/>
                                     </div>
 
                                     <div className="form__input">
                                         <label htmlFor="">Price (ETH)</label>
-                                        <input id="price" type="number" placeholder="Enter dApp using price" />
+                                        <input id="price" type="number" placeholder="Enter dApp using price" onChange={e => setFormData({...formData, usingPrice: e.target.value})}/>
                                     </div>
                                 </form>
 
@@ -83,11 +122,11 @@ const SubmitApp = () => {
                         setShowModal={setShowModalConfirmation}
                         title={'Confirm'}
                         subTitle={'your dApp will be will be requested to admin to review'}
-                        buttonOnClick={sendTx}
+                        buttonOnClick={submit}
                     />
                 }
 
-                {/* <ModalResult></ModalResult> */}
+                <ModalResult showModal={showModalResult} txHash={txHash} closeModal={() => setShowModalResult(false)}></ModalResult>
             </section>
         </>
     )

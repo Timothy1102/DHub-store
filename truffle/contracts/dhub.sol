@@ -20,6 +20,7 @@ contract DHubStore is Ownable {
         address owner;
         string description;
         string image;
+        string tags;
         string website;
         string github;
         string discord;
@@ -40,6 +41,7 @@ contract DHubStore is Ownable {
         string memory _name,
         string memory _description,
         string memory _image,
+        string memory _tags,
         string memory _website,
         string memory _github,
         string memory _discord,
@@ -55,6 +57,7 @@ contract DHubStore is Ownable {
             msg.sender,
             _description,
             _image,
+            _tags,
             _website,
             _github,
             _discord,
@@ -80,6 +83,7 @@ contract DHubStore is Ownable {
                     requestedApps[i].owner, 
                     requestedApps[i].description,
                     requestedApps[i].image,
+                    requestedApps[i].tags,
                     requestedApps[i].website,
                     requestedApps[i].github,
                     requestedApps[i].discord,
@@ -118,15 +122,17 @@ contract DHubStore is Ownable {
     }
 
     /**
-     * @notice it is free at the moment to use an app, no fee is charged when user use apps
+     * @notice dApp using price will be transferred from dApp user to dApp creator
      * @dev user request to use an app
      */
-    function useApp(uint256 appId) external {
+    function useApp(uint256 appId) external payable{
         if (appId >= apps.length) revert AppNotExist();
         for (uint i = 0; i < apps.length; i++) {
             if (apps[i].id == appId) {
                 App[] storage userApps = userToAppsMapper[msg.sender];
                 userApps.push(apps[i]);
+                address payable appOwner = payable(apps[i].owner);
+                appOwner.transfer(msg.value); //transfer using price to dApp creator
             }
         }
     }

@@ -1,4 +1,6 @@
 import { DAPP__DATA } from '../view/assets/data/data'
+// import { requestToPublishApp } from '../../truffle/script/utils'
+import { requestToPublishApp } from '../../truffle/script/utils'
 const Web3 = require('web3');
 
 /***
@@ -10,6 +12,12 @@ export const getMarketplaceListings = async () => {
 
 export const mintNft = () => {
     console.log('start')
+}
+
+export const submitApp = async (name, description, image, tags, website, github, discord, telegram, smartContractUrl, usingPrice) => {
+    const txHash = await requestToPublishApp(name, description, image, tags, website, github, discord, telegram, smartContractUrl, usingPrice);
+
+    return txHash;
 }
 
 export const sendTx = async () => {

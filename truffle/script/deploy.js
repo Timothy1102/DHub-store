@@ -59,7 +59,7 @@ async function deployScWithBytecode(url) {
 }
 
 // deployScWithBytecode('https://nftstorage.link/ipfs/bafybeig5wqmxma2tmk6robiyikfi5ejnmfujm3ebgke3lhpzy3xuy7v7u4');
-// deploySc();
+deploySc();
 
 module.exports = {
     deploySc,
