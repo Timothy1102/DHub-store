@@ -1,17 +1,13 @@
 const Web3 = require('web3');
 const DHubStoreArtifact = require('../build/contracts/DHubStore.json');
-// const dotenv = require('dotenv');
-// const path = require('path');
-// dotenv.config({path: path.resolve(__dirname, '../../.env')});
+const dotenv = require('dotenv');
+const path = require('path');
+dotenv.config({path: path.resolve(__dirname, '../../.env')});
 
-// const PRIVATE_KEY = process.env.PRIVATE_KEY;
-// const DHUB_ADDRESS = process.env.DHUB_ADDRESS;
-// const provider = process.env.BC_RPC_URL;
-// const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS;
-const ADMIN_ADDRESS = '0x8342E935907f86127F24AE3742A2c147bf60Fc75';
-const PRIVATE_KEY = '8ee8778073107c820819f0bd4df9b94a5753708e024990dffaa8bfadf09cd748';
-const DHUB_ADDRESS = '0xD60e944F828b01ef70E846dA21E2179227C021d1';
-const provider = 'https://rpc.ankr.com/eth_goerli';
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const DHUB_ADDRESS = process.env.DHUB_ADDRESS;
+const provider = process.env.BC_RPC_URL;
+const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS;
 const web3 = new Web3(provider);
 const myEOA = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY);
 web3.eth.accounts.wallet.add(PRIVATE_KEY);
