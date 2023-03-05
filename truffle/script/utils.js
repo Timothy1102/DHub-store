@@ -10,7 +10,7 @@ const DHubStoreArtifact = require('../build/contracts/DHubStore.json');
 // const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS;
 const ADMIN_ADDRESS = '0x8342E935907f86127F24AE3742A2c147bf60Fc75';
 const PRIVATE_KEY = '8ee8778073107c820819f0bd4df9b94a5753708e024990dffaa8bfadf09cd748';
-const DHUB_ADDRESS = '0x16319342a897b286de6216cb5CE7D7B8d64a774B';
+const DHUB_ADDRESS = '0xD60e944F828b01ef70E846dA21E2179227C021d1';
 const provider = 'https://rpc.ankr.com/eth_goerli';
 const web3 = new Web3(provider);
 const myEOA = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY);
@@ -97,7 +97,7 @@ async function rejectApp(appId) {
 /**
  * User registers to use an app
  */
-async function useApp(appId) {
+async function registerApp(appId) {
     try {
         let web3 = new Web3(window.ethereum);
         const DHubStore = new web3.eth.Contract(DHubStoreArtifact.abi, DHUB_ADDRESS);
@@ -176,6 +176,7 @@ async function getUserRequestedApps(userAddress) {
         const DHubStore = new web3.eth.Contract(DHubStoreArtifact.abi, DHUB_ADDRESS);
         const apps = await DHubStore.methods.getAppsRequestedByUser(userAddress).call();
         console.log(`requested apps by user: `, apps);
+        // console.log(`requested apps by u: `, apps[0].name);
     } catch (error) {
         throw error;
     }
@@ -209,20 +210,13 @@ async function getAppInfo(appId) {
     }
 }
 
-// requestToPublishApp('test 2', 'des', 'img', 'code');
-// getPublishedApps();
-// getRequestedApps();
-// publishApp(1);
-// rejectApp(2);
-// getAppInfo(0);
-
 module.exports = {
     requestToPublishApp,
     getPublishedApps,
     getRequestedApps,
     publishApp,
     rejectApp,
-    useApp,
+    registerApp,
     getUserPublishedApps,
     getUserRequestedApps,
     getAppInfo,

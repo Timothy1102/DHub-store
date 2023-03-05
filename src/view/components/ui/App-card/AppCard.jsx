@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom'
 import './app-card.css'
 import { Row, Col } from 'reactstrap'
-import { Tag } from 'antd';
-import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone, CheckCircleOutlined } from '@ant-design/icons'
+import { EyeTwoTone, CheckCircleTwoTone, HeartTwoTone } from '@ant-design/icons'
 import {truncatAddress} from '../../../../utils/format'
-import {sendTx} from '../../../../controller/utils'
+import {registerToUseApp, deploy } from '../../../../controller/blockchain'
 
 const AppCard = ({item}) => {
-    const creator = truncatAddress(item?.owner_address)
-    const selling_price = item?.price
+    const creator = truncatAddress(item?.owner)
+    const selling_price = item?.usingPrice
     const title = item?.name
+    const id = item?.id
     const imgUrl = item?.image
     const desc = item?.description
-    const tag = item?.tag
+    const tag = item?.tags
+    const smartContractUrl = item?.smartContractUrl
     const isUsing = item?.isUsing
 
     return (
@@ -48,13 +49,6 @@ const AppCard = ({item}) => {
                                     color: '#39a68c',
                                 }}
                             >
-                                {/* {tags.map((tag, i) => {
-                                    // Re-formatting
-                                    if (i !== tags.length - 1) {
-                                        return tag + ', '
-                                    }
-                                    return tag
-                                })} */}
                                 {tag}
                             </p>
                         </div>
@@ -89,9 +83,11 @@ const AppCard = ({item}) => {
             <div className="d-flex gap-3" style={{ marginTop: 10 }}>
                 <div className="w-100 d-flex align-items-center justify-content-between">
                 {isUsing ? 
-                    <Tag icon={<CheckCircleOutlined />} color="success" style={{borderRadius: 15 }}>
-                        Using
-                    </Tag>
+                    <div>
+                        <button className="use__btn font-semibold" onClick={deploy(smartContractUrl)}>
+                            Deploy Smart Contract
+                        </button>
+                    </div>
                     :
                     <div>
                         <div>
@@ -101,7 +97,7 @@ const AppCard = ({item}) => {
                             </p>
                         </div>
                         <div>
-                            <button className="use__btn font-semibold" onClick={sendTx}>
+                            <button className="use__btn font-semibold" onClick={registerToUseApp(id)}>
                                 Use App
                             </button>
                         </div>

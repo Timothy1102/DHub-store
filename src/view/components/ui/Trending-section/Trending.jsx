@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import './trending.css'
 import AppCard from '../App-card/AppCard'
-import { getMarketplaceListings } from '../../../../controller/utils.js'
+import { getDemoApps } from '../../../../controller/blockchain.js'
 
 const Trending = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        const getMarketData = async () => {
-            const listings = await getMarketplaceListings()
-            setData(listings)
+        const getData = async () => {
+            const apps = await getDemoApps()
+            setData(apps);
         }
-        getMarketData()
-    }, [])
+        getData()
+    }, []);
 
     return (
         <section>

@@ -5,27 +5,20 @@ import { Container, Row, Col } from 'reactstrap'
 import { EyeTwoTone, HeartTwoTone, CommentOutlined } from '@ant-design/icons'
 import '../styles/nft-details.css'
 import DefaultComponent from '../components/ui/Comment-section/CommentSection'
-import { getMarketplaceListings } from '../../controller/utils.js'
 import { truncatAddress } from '../../utils/format'
+import {registerToUseApp, getAppDetail} from '../../controller/blockchain'
 
 const AppDetails = () => {
-    const [data, setData] = useState([])
+    const [currentApp, setCurrentApp] = useState([])
     const { id } = useParams()
 
     useEffect(() => {
-        const getMarketData = async () => {
-            const listings = await getMarketplaceListings()
-            setData(listings)
+        const getAppData = async () => {
+            const app = await getAppDetail(id);
+            setCurrentApp(app);
         }
-        getMarketData()
-    }, [])
-
-    let currentApp = {}
-    data.forEach((item) => {
-        if (item.name === id) {
-            currentApp = item
-        }
-    })
+        getAppData();
+    }, [id])
 
     return (
         <>
@@ -108,41 +101,9 @@ const AppDetails = () => {
                                         </div>
 
                                         <div className="flex justify-center" style={{ marginTop: 50 }}>
-                                            <button className="singleNft-btn d-inline-flex align-items-center gap-2 w-30" onClick={() => {}}>
+                                            <button className="singleNft-btn d-inline-flex align-items-center gap-2 w-30" onClick={() => registerToUseApp(id)}>
                                                 Use
                                             </button>
-
-                                            {/* {currentApp.users.includes(window.accountId) ? (
-                                                <>
-                                                    <div
-                                                        className=" d-inline-flex align-items-center gap-2 w-30"
-                                                        style={{
-                                                            float: 'right',
-                                                            marginRight: 200,
-                                                            marginTop: 5,
-                                                            color: 'white',
-                                                        }}
-                                                    >
-                                                        <CheckCircleTwoTone
-                                                            twoToneColor="#52c41a"
-                                                            style={{
-                                                                fontSize: 30,
-                                                            }}
-                                                        />{' '}
-                                                        Using
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <button
-                                                    className="singleNft-btn d-inline-flex align-items-center gap-2 w-30"
-                                                    style={{
-                                                        float: 'right',
-                                                        marginRight: 200,
-                                                    }}
-                                                >
-                                                    Use
-                                                </button>
-                                            )} */}
                                         </div>
 
                                         <div
@@ -178,14 +139,6 @@ const AppDetails = () => {
                                                     color: 'cyan',
                                                 }}
                                             >
-                                                {/* {currentApp.tag && JSON.parse(currentApp?.tag).map((tag, i) => {
-                                                    // Re-formatting
-                                                    if (i !== JSON.parse(currentApp?.tag).length - 1) {
-                                                        return tag + ', '
-                                                    }
-                                                        return tag
-                                                    })
-                                                } */}
                                                 {currentApp.tag}
                                             </p>
                                         </div>

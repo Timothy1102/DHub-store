@@ -3,6 +3,7 @@ import { CommentSection } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 import { useState } from 'react'
 
+// only demo data for now
 const CustomComponent = () => {
   const [data] = useState([
     {

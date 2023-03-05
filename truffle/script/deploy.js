@@ -3,6 +3,7 @@ const path = require('path');
 const Web3 = require('web3');
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 const DHubStoreArtifact = require('../build/contracts/DHubStore.json');
+const solc = require('solc');
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const provider = process.env.BC_RPC_URL;
@@ -33,35 +34,61 @@ async function deploySc() {
 }
 
 /**
- * Deploy Smart Contract to testnet with bytecode stored on IFPS
+ * Deploy Smart Contract to testnet with smart contract code stored on IFPS
  * 
- * @param {string} url IPFS url where contract artifact is stored
+ * @param {string} smartContractUrl IPFS url where contract is stored
  * 
  * @return {string} address of the deployed smart contract
  */
-async function deployScWithBytecode(url) {
+async function deployScWithCode(smartContractUrl) {
     try {
-        // fetch contract artifact from IPFS
-        const response = await fetch(url);
-        const artifact = await response.json();
+        // fetch contract from IPFS
+        const response = await fetch(smartContractUrl);
+        const contract = await response.json();
 
-        // deploy smart contract with artifact
+        const input = {
+            language: 'Solidity',
+            sources: contract,
+            settings: {
+                outputSelection: {
+                    '*': {
+                        '*': [ 'abi', 'evm.bytecode' ]
+                    }
+                }
+            }
+        }
+
+        // compile contract
+        const compiledContracts = JSON.parse(solc.compile(JSON.stringify(input))).contracts;
+
+        // deploy smart contract with compiledContracts
         console.log('Deploying smart contract to testnet...');
-        const DHubStore = new web3.eth.Contract(artifact.abi);
-        const tx = await DHubStore
-            .deploy({ data: artifact.bytecode, arguments: [] })
-            .send({ from: myEOA.address, gas: 5_000_000 });
-        const address = tx._address;
-        console.log('Contract address: ', address);
+        const appContract = new web3.eth.Contract(compiledContracts.abi);
+        const functionToCall = appContract.deploy({ data: compiledContracts.bytecode, arguments: [] });
+        const gasLimit = 6000000;
+        const gasPrice = await web3.eth.getGasPrice();
+
+        const transactionObject = {
+            from: await web3.eth.getCoinbase(),
+            to: DHUB_ADDRESS,
+            gasLimit: web3.utils.toHex(gasLimit),
+            gasPrice: web3.utils.toHex(gasPrice),
+            data: functionToCall.encodeABI(),
+        };
+
+        const txHash = await window.ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [transactionObject]
+        });
+
+        return txHash;
     } catch (error) {
         console.error(error);
     }
 }
-
-// deployScWithBytecode('https://nftstorage.link/ipfs/bafybeig5wqmxma2tmk6robiyikfi5ejnmfujm3ebgke3lhpzy3xuy7v7u4');
 deploySc();
 
 module.exports = {
     deploySc,
-    deployScWithBytecode,
+    deployScWithCode,
 };

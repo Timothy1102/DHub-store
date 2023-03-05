@@ -4,51 +4,28 @@ import AppCard from '../components/ui/App-card/AppCard'
 import CommonSection from '../components/ui/Common-section/CommonSection'
 import { Container, Row, Col } from 'reactstrap'
 import '../styles/wallet.css'
-import {requestedApps} from '../assets/data/data'
+import {fetchRequestedApps, getMyPublishedApps, getMyRequestedApps, getMyUsingApps} from '../../controller/blockchain'
 
 const Profile = () => {
     const [isAdmin, setIsAdmin] = useState(false);
+    const [requestedApps, setRequestedApps] = useState(null);
+    const [myRequestedApps, setMyRequestedApps] = useState(null);
+    const [myPublishedApps, setMyPublishedApps] = useState(null);
+    const [myUsingApps, setMyUsingApps] = useState(null);
 
     useEffect(() => {
-        if (window.ethereum.selectedAddress === '0x8342e935907f86127f24ae3742a2c147bf60fc75') {
+        if (window.ethereum.selectedAddress === process.env.ADMIN_ADDRESS) {
             setIsAdmin(true);
         }
+        fetchData();
     }, []);
 
-    const usingApps = [
-        {
-            id : 1,
-            name: "ArthSwap",
-            isUsing: true,
-            description : "ArthSwap is the No.1 decentralized exchange platform.",
-            image : "https://arweave.net/u7nz8PlAm5e3wLbrPMi2NaS0J-jEQKmrFPSZRVYwLWc",
-            owner_address: "8eFDPDa1sUboGPUrPz3KCLndgZpKf1KSVcJ6KHiDdoWb",
-            tag: "[\"DeFi\"]",
-        }
-    ]
-
-    const myApps = [
-        {
-            id: 0,
-            name: 'ArthSwap',
-            creator: '0x5B38Da6a701c568545dCfcB03FcB875f56beddC4',
-            description:
-                "ArthSwap’s primary goal is to expand our service within the Astar Network ecosystem, and our team is hence eager to optimize all features for the network, referring to us as an “Astar-native” DApp (Decentralized Application). Essentially, every ecosystem has the spearhead DEX, that's why ArthSwap to Astar is what Trader Joe is to Avalanche, Quickswap to Polygon, and Uniswap to Ethereum.",
-            imgUrl: 'https://nftstorage.link/ipfs/bafybeid5ftqbr2c3nnvwmgnt4gjnzrbetrnqsgn6tv24nojgscdplg5hzq/Screen%20Shot%202022-06-14%20at%2007.14.04.png',
-            tags: 'Defi',
-            isPublished: true,
-        },
-        {
-            id: 1,
-            name: 'Astar Degens',
-            creator: '0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2',
-            description:
-                'Astar Degens is a community without hierarchy. Where impactful action is incentivized and rewarded. We welcome all ideas equally, and value productive effort. As a community, we help realize the value of supportive cooperation within the blockchain space, by encouraging fearless participation within the Astar Network.',
-            imgUrl: 'https://bafybeifqn5sfmyv6edoj4tp2saxmx2wv7whdgcgijx76xefo5iplfbwn6y.ipfs.nftstorage.link/Screen%20Shot%202022-06-14%20at%2022.16.36.png',
-            tags: 'DAO',
-            isPublished: false,
-        },
-    ]
+    const fetchData = async () => {
+        setRequestedApps(await fetchRequestedApps());
+        setMyRequestedApps(await getMyRequestedApps());
+        setMyPublishedApps(await getMyPublishedApps());
+        setMyUsingApps(await getMyUsingApps());
+    }
 
     const goToSubmitAppPage = () => {
         window.location.href = '/submit-app'
@@ -73,8 +50,8 @@ const Profile = () => {
                                         name={item.name}
                                         creator={item.owner_address}
                                         description={item.description}
-                                        imgUrl={item.imgUrl}
-                                        code={item.code}
+                                        imgUrl={item.imageUrl}
+                                        smartContractUrl={item.smartContractUrl}
                                         tags={item.tag}
                                         isPublished={item.isPublished}
                                         price={item.price}
@@ -97,10 +74,10 @@ const Profile = () => {
                                         Submit app
                                     </button>
                                 </Col>
-                                {myApps.map((item) => {
+                                {myRequestedApps?.map((item) => {
                                     return (
                                         <>
-                                            <Col lg="3" md="4" sm="6" className="mb-4" key={item.app_id}>
+                                            <Col lg="3" md="4" sm="6" className="mb-4" key={item.id}>
                                                 <MyAppCard
                                                     id={item.id}
                                                     name={item.name}
@@ -108,7 +85,28 @@ const Profile = () => {
                                                     description={item.description}
                                                     imgUrl={item.imgUrl}
                                                     tags={item.tags}
-                                                    isPublished={item.isPublished}
+                                                    website={item.website}
+                                                    github={item.github}
+                                                    discord={item.discord}
+                                                    telegram={item.telegram}
+                                                    isPublished={false}
+                                                />
+                                            </Col>
+                                        </>
+                                    )
+                                })}
+                                {myPublishedApps?.map((item) => {
+                                    return (
+                                        <>
+                                            <Col lg="3" md="4" sm="6" className="mb-4" key={item.id}>
+                                                <MyAppCard
+                                                    id={item.id}
+                                                    name={item.name}
+                                                    creator={item.owner}
+                                                    description={item.description}
+                                                    imgUrl={item.image}
+                                                    tags={item.tags}
+                                                    isPublished={true}
                                                 />
                                             </Col>
                                         </>
@@ -124,7 +122,7 @@ const Profile = () => {
                                 <Col lg="12" className="mb-5">
                                     <h3 className="trending__title">Using Apps</h3>
                                 </Col>
-                                {usingApps.map((item) => {
+                                {myUsingApps?.map((item) => {
                                     item.is_selling = false
                                     return (
                                         <>

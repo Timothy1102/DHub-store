@@ -1,16 +1,16 @@
 import HeroSection from "../components/ui/HeroSection";
-import LiveAuction from "../components/ui/Live-auction/LiveAuction";
+import PopularSection from "../components/ui/Popular-section/PopularSection";
 import SellerSection from "../components/ui/Seller-section/SellerSection";
 import Trending from "../components/ui/Trending-section/Trending";
-import StepSection from "../components/ui/Step-section/StepSection";
+import FeatureSection from "../components/ui/Feature-section/FeatureSection";
 
 const Home = () => {
 
 	return (
 		<>
 			<HeroSection />
-			<StepSection />
-			<LiveAuction />
+			<FeatureSection />
+			<PopularSection />
 			<SellerSection />
 			<Trending />
 		</>

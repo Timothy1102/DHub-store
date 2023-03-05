@@ -3,19 +3,18 @@ import { Container, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import MyAppCard from '../My-app-card/MyAppCard'
 import AppCard from '../App-card/AppCard'
-import './live-auction.css'
-import { getMarketplaceListings } from '../../../../controller/utils.js'
+import './popular-section.css'
+import { getDemoApps } from '../../../../controller/blockchain'
 
-const LiveAuction = () => {
+const PopularSection = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        const getMarketData = async () => {
-            const listings = await getMarketplaceListings()
-            console.log(listings)
-            setData(listings)
+        const getData = async () => {
+            const apps = await getDemoApps()
+            setData(apps)
         }
-        getMarketData()
+        getData()
     }, [])
 
     return (
@@ -31,7 +30,7 @@ const LiveAuction = () => {
                         </div>
                     </Col>
 
-                    {data.map((item, i) =>
+                    {data?.map((item, i) =>
                         item.owner_address !== '' ? (
                             <Col key={i} lg="3" md="4" sm="6" className="mb-4">
                                 <AppCard item={item} />
@@ -48,4 +47,4 @@ const LiveAuction = () => {
     )
 }
 
-export default LiveAuction
+export default PopularSection;

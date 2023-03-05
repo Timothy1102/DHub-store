@@ -34,10 +34,6 @@ const Header = () => {
                 headerRef.current.classList.remove('header__shrink')
             }
         })
-
-        // return () => {
-        //     window.removeEventListener('scroll')
-        // }
     }, [])
 
     const toggleMenu = () => menuRef.current.classList.toggle('active__menu')
@@ -76,8 +72,7 @@ const Header = () => {
                             <li className="nav__item" style={{ fontWeight: 'bold' }}>
                                 <NavLink to={'/profile'} className={(navClass) => (navClass.isActive ? 'active' : '')}>
                                     {/* whether connected account is admin acocunt or not */}
-                                    {/* todo: put admin address into .env */}
-                                    {account === '0x8342e935907f86127f24ae3742a2c147bf60fc75' ? 'REQUESTS' : 'PROFILE'}
+                                    {account === process.env.ADMIN_ADDRESS ? 'REQUESTS' : 'PROFILE'}
                                 </NavLink>
                             </li>
                         </ul>
@@ -87,7 +82,6 @@ const Header = () => {
                         <button className=" create__btn d-flex align-items-center gap-2" onClick={connectWallet}>
                             <span className='my-[-15px] mx-3'>{account ? truncatAddress(account) : 'Connect'}</span>
                         </button>
-                        {/* {window.ethereum.selectedAddress} */}
 
                         <span className="mobile__menu">
                             <i className="ri-menu-line" onClick={toggleMenu}></i>

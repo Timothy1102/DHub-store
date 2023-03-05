@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './my-app-card.css'
-// import ModalConfirmation from '../Modal/Modal-confirmation/ModalConfirmation'
 import { Row, Col } from 'reactstrap'
 import {CheckCircleTwoTone, ClockCircleTwoTone, RiseOutlined} from '@ant-design/icons'
 import {truncatAddress} from '../../../../utils/format'
 import { Button } from 'antd';
+import {reject, publish} from '../../../../controller/blockchain'
 
-const MyAppCard = ({id, name, creator, description, imgUrl, code, price, tags, isPublished}) => {
+const MyAppCard = ({id, name, creator, description, imgUrl, smartContractUrl, price, tags, website, github, discord, telegram, isPublished}) => {
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        if (window.ethereum.selectedAddress === '0x8342e935907f86127f24ae3742a2c147bf60fc75') {
+        if (window.ethereum.selectedAddress === process.env.ADMIN_ADDRESS) {
             setIsAdmin(true);
         }
     }, []);
@@ -85,18 +85,24 @@ const MyAppCard = ({id, name, creator, description, imgUrl, code, price, tags, i
             {isAdmin &&
                 <div className=" d-flex align-items-center gap-2 single__nft-more">
                     <span style={{ fontSize: '1.3rem' }}>
-                        <i className="ri-github-fill"></i>
+                        <a href={github} target="_blank" rel="noreferrer">
+                            <i className="ri-github-fill"></i>
+                        </a>
                     </span>
                     <span style={{ fontSize: '1.3rem' }}>
-                        {/* <a href="https://google.com/" target="_blank" rel="noreferrer"> */}
+                        <a href={website} target="_blank" rel="noreferrer">
                             <i className="ri-global-line"></i>
-                        {/* </a> */}
+                        </a>
                     </span>
                     <span style={{ fontSize: '1.3rem' }}>
-                        <i className="ri-send-plane-line"></i>
+                        <a href={telegram} target="_blank" rel="noreferrer">
+                            <i className="ri-send-plane-line"></i>
+                        </a>
                     </span>
                     <span style={{ fontSize: '1.3rem' }}>
-                        <i className="ri-discord-fill"></i>
+                        <a href={discord} target="_blank" rel="noreferrer">
+                            <i className="ri-discord-fill"></i>
+                        </a>
                     </span>
                 </div>
             }
@@ -113,19 +119,21 @@ const MyAppCard = ({id, name, creator, description, imgUrl, code, price, tags, i
                 </div>
             </div>
 
-            {code ?
+            {smartContractUrl ?
                 <>
                     <div className="flex items-center justify-center mt-2">
-                        <button className="use__btn font-[700]">
-                            Review Smart Contract
-                            <RiseOutlined />
-                        </button>
+                        <a href={smartContractUrl} target="_blank" rel="noreferrer">
+                            <button className="use__btn font-[700]">
+                                Review Smart Contract
+                                <RiseOutlined />
+                            </button>
+                        </a>
                     </div>
                     <div className="flex items-center justify-between mt-2">
-                        <Button type="text primary" danger className='bg-[#454242]'>
+                        <Button type="text primary" danger className='bg-[#454242]' onClick={reject(id)}>
                             Reject
                         </Button>
-                        <Button type="text primary order-last" className='bg-[#454242]'>
+                        <Button type="text primary order-last" className='bg-[#454242]' onClick={publish(id)}>
                             Publish
                         </Button>
                     </div>
@@ -147,14 +155,6 @@ const MyAppCard = ({id, name, creator, description, imgUrl, code, price, tags, i
                     </div>
                 )
             }
-
-            {/* {showModalConfirmation &&
-                <ModalConfirmation
-                    setShowModal={setShowModalConfirmation}
-                    title={'Confirm'}
-                    subTitle={'your dApp will be will be requested to admin to review'}
-                />
-            } */}
         </div>
     )
 }

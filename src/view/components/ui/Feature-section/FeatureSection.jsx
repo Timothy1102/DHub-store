@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'reactstrap'
-import './step-section.css'
+import './feature-section.css'
 
-const STEP__DATA = [
+const FEATURES = [
     {
         title: 'Pubplish dApps',
         desc: 'Make money by listing your dApps on our Marketplace so that everyone can use them.',
@@ -14,7 +14,7 @@ const STEP__DATA = [
     },
 ]
 
-const StepSection = () => {
+const FeatureSection = () => {
     return (
         <section style={{ padding: '10px 0px' }}>
             <Container>
@@ -23,7 +23,7 @@ const StepSection = () => {
                         <h3 className="step__title text-2xl font-semibold">Features</h3>
                     </Col>
 
-                    {STEP__DATA.map((item, index) => (
+                    {FEATURES.map((item, index) => (
                         <Col lg="3" md="4" sm="6" key={index} className=" mb-4">
                             <div className="single__step__item">
                                 <span>
@@ -42,4 +42,4 @@ const StepSection = () => {
     )
 }
 
-export default StepSection
+export default FeatureSection;

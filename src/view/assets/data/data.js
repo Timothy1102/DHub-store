@@ -6,6 +6,7 @@ import ava05 from '../images/ava-05.png'
 import ava06 from '../images/ava-06.png'
 import {truncatAddress} from '../../../utils/format'
 
+// for demo purposes
 export const DAPP__DATA = [
     {
         id : 1,
@@ -15,7 +16,6 @@ export const DAPP__DATA = [
         image : 'https://nftstorage.link/ipfs/bafybeid5ftqbr2c3nnvwmgnt4gjnzrbetrnqsgn6tv24nojgscdplg5hzq/Screen%20Shot%202022-06-14%20at%2007.14.04.png',
         owner_address: "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4",
         price: 0.5,
-        // reference: 'https://solana.com/',
         tag: 'IDO, launchpad',
     },
     {
@@ -86,10 +86,10 @@ export const DAPP__DATA = [
     },
 ]
 
-// TODO: Fetch onchain data
+// for demo purposes
 export const TRENDING_DAPPS = [DAPP__DATA[6], DAPP__DATA[3], DAPP__DATA[7], DAPP__DATA[5]]
 
-// TODO: Fetch onchain data
+// for demo purposes
 export const SELLER__DATA = [
     {
         id: '01',
@@ -155,6 +155,7 @@ export const SELLER__DATA = [
     },
 ]
 
+// for demo purposes
 export const requestedApps = [
     {
         id: 1, 

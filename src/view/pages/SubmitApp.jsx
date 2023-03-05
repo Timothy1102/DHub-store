@@ -5,7 +5,7 @@ import '../styles/create-item.css'
 import { LoadingOutlined } from '@ant-design/icons'
 import ModalConfirmation from '../components/ui/Modal/Modal-confirmation/ModalConfirmation'
 import ModalResult from '../components/ui/Modal/Modal-result/ModalResult'
-import {submitApp} from '../../controller/utils'
+import {submitApp} from '../../controller/blockchain'
 
 const SubmitApp = () => {
     const [showModalConfirmation, setShowModalConfirmation] = useState(false);

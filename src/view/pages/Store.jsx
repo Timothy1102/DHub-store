@@ -4,18 +4,17 @@ import AppCard from '../components/ui/App-card/AppCard'
 import MyAppCard from '../components/ui/My-app-card/MyAppCard'
 import { Container, Row, Col } from 'reactstrap'
 import '../styles/market.css'
-import { getMarketplaceListings } from '../../controller/utils.js'
+import { fetchPublishedApps } from '../../controller/blockchain.js'
 
 const Store = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        const getMarketData = async () => {
-            const listings = await getMarketplaceListings()
-            console.log(listings)
-            setData(listings)
+        const getData = async () => {
+            const apps = await fetchPublishedApps();
+            setData(apps)
         }
-        getMarketData()
+        getData();
     }, [])
 
     return (
@@ -61,7 +60,7 @@ const Store = () => {
                             </div>
                         </Col>
 
-                        {data.map((item, i) =>
+                        {data?.map((item, i) =>
                             item.owner_address !== '' ? (
                                 <Col key={i} lg="3" md="4" sm="6" className="mb-4">
                                     <AppCard item={item} />
