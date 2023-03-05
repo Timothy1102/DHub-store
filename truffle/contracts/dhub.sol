@@ -36,6 +36,10 @@ contract DHubStore is Ownable {
 
     // user address => apps used by that user
     mapping(address => App[]) private userToAppsMapper;
+    // user address => apps requested by that user
+    mapping(address => App[]) private userToRequestedAppsMapper;
+    // user address => apps published by that user
+    mapping(address => App[]) private userToPublishedAppsMapper;
 
     function requestToPublishApp(
         string memory _name,
@@ -65,6 +69,8 @@ contract DHubStore is Ownable {
             _smartContractUrl,
             _usingPrice
         ));
+        App[] storage userRequestedApps = userToRequestedAppsMapper[msg.sender];
+        userRequestedApps.push(requestedApps[requestedApps.length-1]);
     }
 
     /**
@@ -91,6 +97,8 @@ contract DHubStore is Ownable {
                     requestedApps[i].smartContractUrl,
                     requestedApps[i].usingPrice
                 ));
+                App[] storage userPublishedApps = userToPublishedAppsMapper[requestedApps[i].owner];
+                userPublishedApps.push(apps[apps.length-1]);
             }
         }
         removeAppFromRequestedApps(requestedAppId);
@@ -178,14 +186,25 @@ contract DHubStore is Ownable {
 
     /**
      * @dev Get all apps belong to a user (apps that the user has used)
-     * @notice Only app users can view their own app info
      * @return Array of Apps
      */
-    function getAppsBelongToUser(address appUserAddress) external view returns (App[] memory) {
-        // revert if caller is not contract owner and attempt to view other address's app info
-        if (msg.sender != owner()) {
-            if (msg.sender != appUserAddress) revert NotAllowedToSeeAppInfo();
-        }
-        return userToAppsMapper[appUserAddress];
+    function getAppsBelongToUser(address userAddress) external view returns (App[] memory) {
+        return userToAppsMapper[userAddress];
+    }
+
+    /**
+     * @dev Get all apps requested by a user
+     * @return Array of Apps
+     */
+    function getAppsRequestedByUser(address userAddress) external view returns (App[] memory) {
+        return userToRequestedAppsMapper[userAddress];
+    }
+
+    /**
+     * @dev Get all apps published by a user
+     * @return Array of Apps
+     */
+    function getAppsPublishedByUser(address userAddress) external view returns (App[] memory) {
+        return userToPublishedAppsMapper[userAddress];
     }
 }

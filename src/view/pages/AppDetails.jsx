@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { EyeTwoTone, HeartTwoTone, CommentOutlined } from '@ant-design/icons'
 import '../styles/nft-details.css'
 import DefaultComponent from '../components/ui/Comment-section/CommentSection'
-import { getMarketplaceListings, mintNft } from '../../controller/utils.js'
+import { getMarketplaceListings } from '../../controller/utils.js'
 import { truncatAddress } from '../../utils/format'
 
 const AppDetails = () => {
@@ -108,7 +108,7 @@ const AppDetails = () => {
                                         </div>
 
                                         <div className="flex justify-center" style={{ marginTop: 50 }}>
-                                            <button className="singleNft-btn d-inline-flex align-items-center gap-2 w-30" onClick={() => mintNft()}>
+                                            <button className="singleNft-btn d-inline-flex align-items-center gap-2 w-30" onClick={() => {}}>
                                                 Use
                                             </button>
 

@@ -1,17 +1,17 @@
 const Web3 = require('web3');
 const DHubStoreArtifact = require('../build/contracts/DHubStore.json');
-const dotenv = require('dotenv');
-const path = require('path');
-dotenv.config({path: path.resolve(__dirname, '../../.env')});
+// const dotenv = require('dotenv');
+// const path = require('path');
+// dotenv.config({path: path.resolve(__dirname, '../../.env')});
 
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const DHUB_ADDRESS = process.env.DHUB_ADDRESS;
-const provider = process.env.BC_RPC_URL;
-const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS;
-// const ADMIN_ADDRESS = '0x8342E935907f86127F24AE3742A2c147bf60Fc75';
-// const PRIVATE_KEY = '8ee8778073107c820819f0bd4df9b94a5753708e024990dffaa8bfadf09cd748';
-// const DHUB_ADDRESS = '0x16319342a897b286de6216cb5CE7D7B8d64a774B';
-// const provider = 'https://rpc.ankr.com/eth_goerli';
+// const PRIVATE_KEY = process.env.PRIVATE_KEY;
+// const DHUB_ADDRESS = process.env.DHUB_ADDRESS;
+// const provider = process.env.BC_RPC_URL;
+// const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS;
+const ADMIN_ADDRESS = '0x8342E935907f86127F24AE3742A2c147bf60Fc75';
+const PRIVATE_KEY = '8ee8778073107c820819f0bd4df9b94a5753708e024990dffaa8bfadf09cd748';
+const DHUB_ADDRESS = '0x16319342a897b286de6216cb5CE7D7B8d64a774B';
+const provider = 'https://rpc.ankr.com/eth_goerli';
 const web3 = new Web3(provider);
 const myEOA = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY);
 web3.eth.accounts.wallet.add(PRIVATE_KEY);
@@ -156,6 +156,45 @@ async function getRequestedApps() {
 }
 
 /**
+ * Get apps published by a user
+ */
+async function getUserPublishedApps(userAddress) {
+    try {
+        const DHubStore = new web3.eth.Contract(DHubStoreArtifact.abi, DHUB_ADDRESS);
+        const apps = await DHubStore.methods.getAppsPublishedByUser(userAddress).call();
+        console.log(`published apps by user: `, apps);
+    } catch (error) {
+        throw error;
+    }
+}
+
+/**
+ * Get apps requested by a user
+ */
+async function getUserRequestedApps(userAddress) {
+    try {
+        const DHubStore = new web3.eth.Contract(DHubStoreArtifact.abi, DHUB_ADDRESS);
+        const apps = await DHubStore.methods.getAppsRequestedByUser(userAddress).call();
+        console.log(`requested apps by user: `, apps);
+    } catch (error) {
+        throw error;
+    }
+}
+
+/**
+ * Get apps user's using apps
+ */
+async function getUserUsingApps(userAddress) {
+    try {
+        const DHubStore = new web3.eth.Contract(DHubStoreArtifact.abi, DHUB_ADDRESS);
+        const apps = await DHubStore.methods.getAppsBelongToUser(userAddress).call();
+        console.log(`using apps of the user: `, apps);
+    } catch (error) {
+        throw error;
+    }
+}
+
+/**
  * Get app info
  */
 async function getAppInfo(appId) {
@@ -184,5 +223,8 @@ module.exports = {
     publishApp,
     rejectApp,
     useApp,
+    getUserPublishedApps,
+    getUserRequestedApps,
     getAppInfo,
+    getUserUsingApps,
 };

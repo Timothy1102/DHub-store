@@ -44,7 +44,6 @@ const SubmitApp = () => {
             formData.smartContract,
             formData.usingPrice,
         );
-        console.log('submit done');
         setTxHash(res);
         setShowModalResult(true);
     }

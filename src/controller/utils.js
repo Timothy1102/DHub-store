@@ -1,6 +1,16 @@
 import { DAPP__DATA } from '../view/assets/data/data'
-// import { requestToPublishApp } from '../../truffle/script/utils'
-import { requestToPublishApp } from '../../truffle/script/utils'
+import { 
+    requestToPublishApp, 
+    getUserPublishedApps, 
+    getUserRequestedApps,
+    getUserUsingApps,
+    getAppInfo,
+    useApp,
+    rejectApp,
+    publishApp,
+    getRequestedApps,
+    getPublishedApps,
+} from '../../truffle/script/utils'
 const Web3 = require('web3');
 
 /***
@@ -10,12 +20,54 @@ export const getMarketplaceListings = async () => {
     return DAPP__DATA;
 }
 
-export const mintNft = () => {
-    console.log('start')
+/***
+ * get all dApps published by the connected user
+ */
+export const getMyPublishedApps = async () => {
+    return getUserPublishedApps(window.ethereum.selectedAddress);
 }
 
-export const submitApp = async (name, description, image, tags, website, github, discord, telegram, smartContractUrl, usingPrice) => {
-    const txHash = await requestToPublishApp(name, description, image, tags, website, github, discord, telegram, smartContractUrl, usingPrice);
+/***
+ * get all dApps requested by the connected user
+ */
+export const getMyRequestedApps = async () => {
+    return getUserRequestedApps(window.ethereum.selectedAddress);
+}
+
+/***
+ * get all dApps using by the connected user
+ */
+export const getMyUsingApps = async () => {
+    return getUserUsingApps(window.ethereum.selectedAddress);
+}
+
+/***
+ * submit dApp to be reviewed by admin
+ */
+export const submitApp = async (
+    name,
+    description,
+    image,
+    tags,
+    website,
+    github,
+    discord,
+    telegram,
+    smartContractUrl,
+    usingPrice
+) => {
+    const txHash = await requestToPublishApp(
+        name,
+        description,
+        image,
+        tags,
+        website,
+        github,
+        discord,
+        telegram,
+        smartContractUrl,
+        usingPrice
+    );
 
     return txHash;
 }
