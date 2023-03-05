@@ -15,4 +15,4 @@
 ## Useful Commands
 
 - `cd truffle && truffle compile`: compile smart contract
-- `cd truffle && truffle test`: exucute unit tests for smart contract
+- `cd truffle && truffle test`: exucute unit tests for smart contract (with Ganache turned on)
